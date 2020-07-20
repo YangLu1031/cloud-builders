@@ -1,0 +1,21 @@
+# In this directory, run the following command to build this builder.
+# gcloud builds submit --substitutions=_YYYYMMDD=$(date +%Y%m%d)
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--tag=us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
+  - '--tag=europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
+  - '--tag=asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
+  - '--tag=us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
+  - '--tag=europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
+  - '--tag=asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
+  - '.'
+images:
+- 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:latest'
+- 'europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:latest'
+- 'asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:latest'
+- 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
+- 'europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
+- 'asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
