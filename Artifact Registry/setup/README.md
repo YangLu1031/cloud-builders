@@ -15,7 +15,5 @@ gcloud beta artifacts repositories create cloud-builders --repository-format=doc
 gcloud beta artifacts repositories create cloud-builders --repository-format=docker --location=europe
 gcloud beta artifacts repositories create cloud-builders --repository-format=docker --location=asia
 gcloud beta artifacts repositories list
-gcloud auth configure-docker us-docker.pkg.dev
-gcloud auth configure-docker europe-docker.pkg.dev
-gcloud auth configure-docker asia-docker.pkg.dev
+gcloud auth configure-docker us-docker.pkg.dev,europe-docker.pkg.dev,asia-docker.pkg.dev --quiet
 ```
