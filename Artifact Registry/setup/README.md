@@ -10,7 +10,8 @@ https://cloud.google.com/artifact-registry/docs/docker/quickstart#before-you-beg
 ## Run this script
 
 ```
-# Enable the API
+# Enable the APIs
+gcloud services enable cloudbuild.googleapis.com --async
 gcloud services enable artifactregistry.googleapis.com
 # Create the Repositoriews
 gcloud beta artifacts repositories create cloud-builders --repository-format=docker --location=us
