@@ -1,0 +1,5 @@
+*
+!docker
+!docker/.gcloudignore
+!docker/Dockerfile
+!docker/cloudbuild.yaml

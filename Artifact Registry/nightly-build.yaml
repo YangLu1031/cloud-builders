@@ -1,0 +1,17 @@
+# In this directory, run the following command to build all cloud builders.
+# gcloud builds submit --config=nightly-build.yaml
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-eEuo'
+  - 'pipefail'
+  - '-c'
+  - |-
+    today=$(date +%Y%m%d)
+    for i in docker ; do
+      gcloud builds submit --config=$i/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} $i
+    done
+options:
+  env:
+  - 'TZ=EST5EDT'
