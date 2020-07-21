@@ -1,5 +1,9 @@
 # In this directory, run the following command to build all cloud builders.
 # gcloud builds submit --config=nightly-build.yaml
+# The nightly cron trigger executes from the root of the repository, so the
+# below 'cd "Artifact Registry"' conditional enables this build config to
+# work correctly both from the repository root and from within the "Artifact
+# Registry" directory.
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
@@ -8,6 +12,7 @@ steps:
   - 'pipefail'
   - '-c'
   - |-
+    [[ -d "Artifact Registry" ]] && cd "Artifact Registry"
     today=$(date +%Y%m%d)
     for i in docker ; do
       gcloud builds submit --config=$i/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} $i
