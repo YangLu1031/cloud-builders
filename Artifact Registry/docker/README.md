@@ -24,8 +24,16 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/cloud-builders/docker'
+- name: 'us-docker.pkg.dev/cloud-builders/cloud-builders/docker'
   args: ['build', '-t', '...']
+```
+
+Using a tagged docker version:
+```yaml
+steps:
+- name: 'docker:stable-git'
+  args: ['build', '-t', '...']
+  entrypoint: 'docker'
 ```
 
 ## Credentials
