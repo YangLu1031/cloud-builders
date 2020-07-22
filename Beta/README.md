@@ -1,7 +1,11 @@
-# Artifact Registry Beta
+# Beta Cloud Builders
 
 This repository reflects the upcoming Beta release of cloud-builders to
 [Artifact Registry](https://cloud.google.com/artifact-registry).
+
+## Background
+
+TODO: Explain the reasons for the migration and what is changing.
 
 ## Setup
 
