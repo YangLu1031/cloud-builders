@@ -35,3 +35,7 @@
 !gsutil/.gcloudignore
 !gsutil/Dockerfile
 !gsutil/cloudbuild.yaml
+!javac
+!javac/.gcloudignore
+!javac/Dockerfile
+!javac/cloudbuild.yaml
