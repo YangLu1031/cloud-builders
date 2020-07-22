@@ -11,3 +11,7 @@
 !docker/.gcloudignore
 !docker/Dockerfile
 !docker/cloudbuild.yaml
+!dotnet
+!dotnet/.gcloudignore
+!dotnet/Dockerfile
+!dotnet/cloudbuild.yaml
