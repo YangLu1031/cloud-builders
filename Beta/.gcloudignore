@@ -31,3 +31,7 @@
 !gradle/.gcloudignore
 !gradle/Dockerfile
 !gradle/cloudbuild.yaml
+!gsutil
+!gsutil/.gcloudignore
+!gsutil/Dockerfile
+!gsutil/cloudbuild.yaml

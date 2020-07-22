@@ -33,7 +33,7 @@ steps:
 Using a tagged `gcloud` version:
 ```yaml
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:300.0.0'
   args: ['builds', 'list']
   entrypoint: 'gcloud'
 ```
