@@ -1,8 +1,8 @@
 *
-!blaze
-!blaze/.gcloudignore
-!blaze/Dockerfile
-!blaze/cloudbuild.yaml
+!bazel
+!bazel/.gcloudignore
+!bazel/Dockerfile
+!bazel/cloudbuild.yaml
 !curl
 !curl/.gcloudignore
 !curl/Dockerfile
