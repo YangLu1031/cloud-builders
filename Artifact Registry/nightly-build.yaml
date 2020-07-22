@@ -14,7 +14,10 @@ steps:
   - |-
     [[ -d "Artifact Registry" ]] && cd "Artifact Registry"
     today=$(date +%Y%m%d)
-    for i in docker ; do
+    for i in \
+        bazel \
+        docker \
+        ; do
       gcloud builds submit --config=$i/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} $i
     done
 options:
