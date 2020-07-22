@@ -20,5 +20,6 @@ in this directory.
 
 ## TODO
 
-- Add all the images.
-- Automate!
+- Add images for wget, kustomize, scaffold, helm, python3, terraform, firebase.
+- Migrate gcs-fetcher and gke-deploy to AR.
+- Automate all the things!
