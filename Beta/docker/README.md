@@ -1,6 +1,6 @@
 # Docker
 
-This `docker` builder is based on the `docker` image supplied by the Docker team
+This `docker` build step is based on the `docker` image supplied by the Docker team
 at https://hub.docker.com/_/docker.
 
 The Docker Team additionally supports multiple tagged versions as well as

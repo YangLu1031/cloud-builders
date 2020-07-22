@@ -1,6 +1,6 @@
 # dotnet
 
-This `dotnet` builder is based on the `microsoft/dotnet:sdk` image supplied by
+This `dotnet` build step is based on the `microsoft/dotnet:sdk` image supplied by
 Microsoft at https://hub.docker.com/_/microsoft-dotnet-core.
 
 Microsoft additionally supports multiple tagged versions as well as additional

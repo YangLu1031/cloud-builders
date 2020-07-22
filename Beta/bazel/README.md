@@ -1,6 +1,6 @@
 # Bazel
 
-This `bazel` builder is based on the `bazel` image supplied by Google's Bazel
+This `bazel` build step is based on the `bazel` image supplied by Google's Bazel
 team as described at
 https://console.cloud.google.com/marketplace/details/google/bazel.
 

@@ -42,7 +42,7 @@ images:
 
 echo "# $1
 
-This \`$1\` builder is based on the \`$2\` image supplied by TODO
+This \`$1\` build step is based on the \`$2\` image supplied by TODO
 at http://TODO
 
 TODO additionally supports multiple tagged versions (TODO: as well as

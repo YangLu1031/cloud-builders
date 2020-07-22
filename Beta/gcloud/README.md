@@ -1,8 +1,9 @@
 # gcloud
 
-This `gcloud` builder is based on the `gcr.io/google.com/cloudsdktool/cloud-sdk`
-image supplied by the Google Cloud SDK team.  Please visit
-https://github.com/GoogleCloudPlatform/cloud-sdk-docker for details.
+This `gcloud` build step is based on the
+`gcr.io/google.com/cloudsdktool/cloud-sdk` image supplied by the Google Cloud
+SDK team.  Please visit https://github.com/GoogleCloudPlatform/cloud-sdk-docker
+for details.
 
 The Cloud SDK team additionally supports multiple tagged versions of `gcloud`
 across multiple platforms. For details, please visit

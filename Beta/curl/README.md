@@ -1,6 +1,6 @@
 # curl
 
-This `curl` builder is based on the `launcher.gcr.io/google/ubuntu1804` image
+This `curl` build step is based on the `launcher.gcr.io/google/ubuntu1804` image
 supplied in the Google Cloud Marketplace at
 https://console.cloud.google.com/marketplace/details/ubuntu-os-cloud/ubuntu-xenial.
 

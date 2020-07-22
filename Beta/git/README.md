@@ -1,6 +1,6 @@
 # git
 
-This `git` builder is based on the `gcr.io/google.com/cloudsdktool/cloud-sdk`
+This `git` build step is based on the `gcr.io/google.com/cloudsdktool/cloud-sdk`
 image supplied by the Google Cloud SDK team and configured to run `git` using
 [Application Default
 Credentials](https://cloud.google.com/docs/authentication/production) when
