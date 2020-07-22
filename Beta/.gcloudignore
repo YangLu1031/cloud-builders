@@ -3,6 +3,10 @@
 !blaze/.gcloudignore
 !blaze/Dockerfile
 !blaze/cloudbuild.yaml
+!curl
+!curl/.gcloudignore
+!curl/Dockerfile
+!curl/cloudbuild.yaml
 !docker
 !docker/.gcloudignore
 !docker/Dockerfile
