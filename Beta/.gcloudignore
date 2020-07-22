@@ -39,3 +39,7 @@
 !javac/.gcloudignore
 !javac/Dockerfile
 !javac/cloudbuild.yaml
+!kubectl
+!kubectl/.gcloudignore
+!kubectl/Dockerfile
+!kubectl/cloudbuild.yaml
