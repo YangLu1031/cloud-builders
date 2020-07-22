@@ -1,10 +1,6 @@
 # In this directory, run the following command to build all cloud builders.
 # gcloud builds submit --config=nightly-build.yaml
-#
-# The nightly cron trigger executes from the root of the repository, so the
-# below 'cd Beta' conditional enables this build config to
-# work correctly both from the repository root and from within the `Beta`
-# directory.
+
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
@@ -13,15 +9,31 @@ steps:
   - 'pipefail'
   - '-c'
   - |-
+    # The nightly cron trigger executes from the root of the repository, so the
+    # following conditional enables this build config to work correctly both
+    # from the repository root and from within the `Beta` directory.
     [[ -d Beta ]] && cd Beta
-    today=$(date +%Y%m%d)
-    for i in \
-        bazel \
-        docker \
-        ; do
-      gcloud builds submit --config=$i/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} $i
+    today=$(date +%Y%m%d) # for dated images
+
+    # Build each build step asynchronously and capture each buildid.
+    declare -A BUILD_IDS
+    for step in $${STEPS}; do
+      buildid=$(gcloud builds submit --config=${step}/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} ${step} --async \
+        | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
+      cat /tmp/${step} # All output to main buildlog.
+      BUILD_IDS[${step}]="${buildid}"
+      echo "${step} buildID: ${buildid}"
+    done
+
+    # Now stream logs while the builds run.
+    for step in $${STEPS}; do
+      echo "Build logs for ${step}:"
+      gcloud builds log --stream ${BUILD_IDS[$step]}
+      echo "End of build logs for ${step}."
+      echo
     done
 options:
   env:
   - 'TZ=EST5EDT'
-timeout: 20m
+  - 'STEPS=bazel curl docker dotnet gcloud git go gradle gsutil javac kubectl mvn npm yarn'
+timeout: 1200s
