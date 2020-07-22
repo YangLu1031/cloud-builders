@@ -16,24 +16,26 @@ steps:
     today=$(date +%Y%m%d) # for dated images
 
     # Build each build step asynchronously and capture each buildid.
-    declare -A BUILD_IDS
-    for step in $${STEPS}; do
+    declare -A build_ids
+    for step in ${steps}; do
+      # Tag the spawned builds to make them easy to find.
+      echo "tags: [ \"${BUILD_ID}\", \"${today}\" ]" >> "${step}/cloudbuild.yaml"
       buildid=$(gcloud builds submit --config=${step}/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} ${step} --async \
         | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
       cat /tmp/${step} # All output to main buildlog.
-      BUILD_IDS[${step}]="${buildid}"
+      build_ids[${step}]="${buildid}"
       echo "${step} buildID: ${buildid}"
     done
 
     # Now stream logs while the builds run.
-    for step in $${STEPS}; do
+    for step in ${steps}; do
       echo "Build logs for ${step}:"
-      gcloud builds log --stream ${BUILD_IDS[$step]}
+      gcloud builds log --stream ${build_ids[$step]}
       echo "End of build logs for ${step}."
       echo
     done
 options:
   env:
   - 'TZ=EST5EDT'
-  - 'STEPS=bazel curl docker dotnet gcloud git go gradle gsutil javac kubectl mvn npm yarn'
+  - 'steps=bazel curl docker dotnet gcloud git go gradle gsutil javac kubectl mvn npm yarn'
 timeout: 1200s
