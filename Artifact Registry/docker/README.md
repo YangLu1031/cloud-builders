@@ -12,7 +12,7 @@ changes to your `cloudbuild.yaml`:
 
 ```
 - name: 'gcr.io/cloud-builders/docker'
-+ name: '{region}-docker.pkg.dev/cloud-builders/docker'
++ name: '{region}-docker.pkg.dev/cloud-builders/cloud-builders/docker'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
