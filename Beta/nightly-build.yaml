@@ -24,3 +24,4 @@ steps:
 options:
   env:
   - 'TZ=EST5EDT'
+timeout: 20m
