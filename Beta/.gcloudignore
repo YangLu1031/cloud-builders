@@ -47,3 +47,11 @@
 !mvn/.gcloudignore
 !mvn/Dockerfile
 !mvn/cloudbuild.yaml
+!npm
+!npm/.gcloudignore
+!npm/Dockerfile
+!npm/cloudbuild.yaml
+!yarn
+!yarn/.gcloudignore
+!yarn/Dockerfile
+!yarn/cloudbuild.yaml
