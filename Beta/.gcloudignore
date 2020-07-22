@@ -43,3 +43,7 @@
 !kubectl/.gcloudignore
 !kubectl/Dockerfile
 !kubectl/cloudbuild.yaml
+!mvn
+!mvn/.gcloudignore
+!mvn/Dockerfile
+!mvn/cloudbuild.yaml
