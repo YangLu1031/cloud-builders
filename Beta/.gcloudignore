@@ -23,3 +23,7 @@
 !git/.gcloudignore
 !git/Dockerfile
 !git/cloudbuild.yaml
+!go
+!go/.gcloudignore
+!go/Dockerfile
+!go/cloudbuild.yaml
