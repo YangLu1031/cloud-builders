@@ -14,6 +14,8 @@ This image is available as
 one of `us`, `europe`, or `asia`. Choose the closest region to where your builds
 are executed.
 
+For information on `helm`, please visit https://helm.sh/.
+
 ## Example
 
 Usage:
@@ -21,13 +23,13 @@ Usage:
 ```yaml
 steps:
 - name: 'us-docker.pkg.dev/cloud-builders/cloud-builders/helm'
-  args: ['TODO']
+  args: ['get', 'all', '${RELEASE_NAME}']
 ```
 
 Using a tagged `helm` version:
 ```yaml
 steps:
 - name: 'gcr.io/k8s-skaffold/skaffold:v1.12.1'
-  args: ['TODO']
+  args: ['get', 'all', '${RELEASE_NAME}']
   entrypoint: 'helm'
 ```

@@ -14,6 +14,8 @@ This image is available as
 is one of `us`, `europe`, or `asia`. Choose the closest region to where your
 builds are executed.
 
+For information on `kustomize`, please visit https://sigs.k8s.io/kustomize.
+
 ## Example
 
 Usage:
@@ -21,13 +23,13 @@ Usage:
 ```yaml
 steps:
 - name: 'us-docker.pkg.dev/cloud-builders/cloud-builders/kustomize'
-  args: ['TODO']
+  args: ['build', 'github.com/kubernetes-sigs/kustomize/examples/multibases/dev/']
 ```
 
 Using a tagged `kustomize` version:
 ```yaml
 steps:
 - name: 'gcr.io/k8s-skaffold/skaffold:v1.12.1'
-  args: ['TODO']
+  args: ['build', 'github.com/kubernetes-sigs/kustomize/examples/multibases/dev/']
   entrypoint: 'kustomize'
 ```
