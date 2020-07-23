@@ -77,8 +77,3 @@ steps:
   args: ['TODO']
   entrypoint: '$1'
 \`\`\`" > "$1/README.md"
-
-echo "!$1
-!$1/.gcloudignore
-!$1/Dockerfile
-!$1/cloudbuild.yaml" >> .gcloudignore
