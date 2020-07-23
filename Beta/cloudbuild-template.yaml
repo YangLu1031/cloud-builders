@@ -1,0 +1,20 @@
+# This template can be used to build *any* of the Cloud Builders.
+#
+# To build "foo", run:
+# gcloud builds submit --config=cloudbuild-template.yaml --substitutions=_STEP=foo foo
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--tag=us-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}'
+  - '--tag=europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}'
+  - '--tag=asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}'
+  - '.'
+images:
+- 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}:latest'
+- 'europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}:latest'
+- 'asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}:latest'
+timeout: 900s
+tags:
+- ${_STEP}

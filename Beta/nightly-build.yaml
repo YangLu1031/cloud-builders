@@ -14,15 +14,23 @@ steps:
     # from the repository root and from within the `Beta` directory.
     [[ -d Beta ]] && cd Beta
     today=$(date +%Y%m%d) # for dated images
+    template=nightly-template.yaml
+    echo "tags:"             >> "${template}"
+    echo "- \"${BUILD_ID}\"" >> "${template}"
+    echo "- \"${today}\""    >> "${template}"
+    echo "- nightly"         >> "${template}"
 
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
     for step in ${steps}; do
-      # Tag the spawned builds to make them easy to find.
-      echo "tags: [ \"${BUILD_ID}\", \"${today}\" ]" >> "${step}/cloudbuild.yaml"
-      buildid=$(gcloud builds submit --config=${step}/cloudbuild.yaml --substitutions=_YYYYMMDD=${today} ${step} --async \
+      stepconfig="cloudbuild-${step}.yaml"
+      cp "${template}" "${stepconfig}"
+      echo "- ${step}" >> "${stepconfig}"
+
+      buildid=$(gcloud builds submit --config=${stepconfig} --substitutions=_YYYYMMDD=${today},_STEP=${step} ${step} --async \
         | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
       cat /tmp/${step} # All output to main buildlog.
+
       build_ids[${step}]="${buildid}"
       echo "${step} buildID: ${buildid}"
     done

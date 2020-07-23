@@ -1,5 +1,7 @@
 **/README.md
+*.yaml
 .gcloudignore
 README.md
 add-builder.sh
-nightly-build.yaml
+setup
+!nightly-template.yaml
