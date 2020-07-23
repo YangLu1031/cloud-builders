@@ -1,5 +1,5 @@
 # In this directory, run the following command to build all cloud builders.
-# gcloud builds submit --config=nightly-build.yaml
+# gcloud builds submit --config=nightly-build.yaml --substitutions=_TRIGGER=manual
 
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -18,7 +18,7 @@ steps:
     echo "tags:"             >> "${template}"
     echo "- \"${BUILD_ID}\"" >> "${template}"
     echo "- \"${today}\""    >> "${template}"
-    echo "- nightly"         >> "${template}"
+    echo "- ${_TRIGGER}"     >> "${template}"
 
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
@@ -45,5 +45,5 @@ steps:
 options:
   env:
   - 'TZ=EST5EDT'
-  - 'steps=bazel curl docker dotnet gcloud git go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform yarn'
+  - 'steps=bazel curl docker dotnet gcloud git go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform wget yarn'
 timeout: 1200s
