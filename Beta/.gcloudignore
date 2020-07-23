@@ -1,4 +1,5 @@
 **/README.md
 .gcloudignore
 README.md
+add-builder.sh
 nightly-build.yaml
