@@ -19,3 +19,4 @@ images:
 - 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel:${_YYYYMMDD}'
 - 'europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel:${_YYYYMMDD}'
 - 'asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel:${_YYYYMMDD}'
+timeout: 900s

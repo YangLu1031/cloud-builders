@@ -38,7 +38,8 @@ images:
 - 'asia-docker.pkg.dev/\$PROJECT_ID/cloud-builders/$1:latest'
 - 'us-docker.pkg.dev/\$PROJECT_ID/cloud-builders/$1:\${_YYYYMMDD}'
 - 'europe-docker.pkg.dev/\$PROJECT_ID/cloud-builders/$1:\${_YYYYMMDD}'
-- 'asia-docker.pkg.dev/\$PROJECT_ID/cloud-builders/$1:\${_YYYYMMDD}'" > "$1/cloudbuild.yaml"
+- 'asia-docker.pkg.dev/\$PROJECT_ID/cloud-builders/$1:\${_YYYYMMDD}'
+timeout: 900s" > "$1/cloudbuild.yaml"
 
 echo "# $1
 

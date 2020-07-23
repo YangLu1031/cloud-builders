@@ -19,3 +19,4 @@ images:
 - 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
 - 'europe-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
 - 'asia-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker:${_YYYYMMDD}'
+timeout: 900s
