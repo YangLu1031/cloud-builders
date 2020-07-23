@@ -37,5 +37,5 @@ steps:
 options:
   env:
   - 'TZ=EST5EDT'
-  - 'steps=bazel curl docker dotnet gcloud git go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold yarn'
+  - 'steps=bazel curl docker dotnet gcloud git go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform yarn'
 timeout: 1200s
