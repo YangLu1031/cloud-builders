@@ -23,3 +23,5 @@ in this directory.
 - Add images for wget, python3, terraform, firebase.
 - Migrate gcs-fetcher and gke-deploy to AR.
 - Automate all the things!
+    - set up notifications on failure https://cloud.google.com/cloud-build/docs/configuring-notifications/configure-smtp
+    - set up PR builds
