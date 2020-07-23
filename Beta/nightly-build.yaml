@@ -47,3 +47,5 @@ options:
   - 'TZ=EST5EDT'
   - 'steps=bazel curl docker dotnet gcloud git go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform wget yarn'
 timeout: 1200s
+tags:
+- "${_TRIGGER}"
