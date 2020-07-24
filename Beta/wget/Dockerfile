@@ -1,3 +1,3 @@
-FROM launcher.gcr.io/google/ubuntu16_04
-RUN apt-get update && apt-get -y install wget ca-certificates && update-ca-certificates
+FROM alpine
+RUN apk --update add openssl wget && rm -rf /var/cache/apk/*
 ENTRYPOINT ["wget"]
