@@ -47,12 +47,12 @@ Migrating to community-maintained images enables us to onboard new tools in the
 Cloud Builders repository. The Beta images include the following tools that were
 not included in the original set of Cloud Builders:
 
-- `[helm](helm)`
-- `[kustomize](kustomize)`
-- `[python](python)`
-- `[setup](setup)`
-- `[skaffold](skaffold)`
-- `[terraform](terraform)`
+- [`helm`](helm)
+- [`kustomize`](kustomize)
+- [`python`](python)
+- [`setup`](setup)
+- [`skaffold`](skaffold)
+- [`terraform`](terraform)
 
 ## Migration
 
