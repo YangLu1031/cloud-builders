@@ -30,11 +30,12 @@ repo](https://github.com/GoogleCloudPlatform/cloud-builders-community).
 A set of Beta Builders are under development; you can browse the future of Cloud
 Builders in the [Beta](Beta) subdirectory.
 
-To file issues and feature requests against these builder images,
-[create an issue in this repo](https://github.com/GoogleCloudPlatform/cloud-builders/issues/new).
-If you are experiencing an issue with the Cloud Build service or
-have a feature request, e-mail google-cloud-dev@googlegroups.com
-or see our [Getting support](https://cloud.google.com/cloud-build/docs/getting-support)
+To file issues and feature requests against these builder images, [create an
+issue in this
+repo](https://github.com/GoogleCloudPlatform/cloud-builders/issues/new).  If you
+are experiencing an issue with the Cloud Build service or have a feature
+request, e-mail google-cloud-dev@googlegroups.com or see our [Getting
+support](https://cloud.google.com/cloud-build/docs/getting-support)
 documentation.
 
 ---
@@ -42,15 +43,14 @@ documentation.
 # Alternative Official Images
 
 Most of the tools in this repo are also available in official
-community-supported publicly available repositories. Such
-repos also generally support multiple versions and platforms,
-available by tag.
+community-supported publicly available repositories. Such repos also generally
+support multiple versions and platforms, available by tag.
 
-The following official community-supported images are compatible with the
-hosted Cloud Build service and function well as build steps; note that
-some will require that you specify an `entrypoint` for the image. Additional
-details regarding each alternative official image are available in the `README.md`
-for the corresponding Cloud Builder.
+The following official community-supported images are compatible with the hosted
+Cloud Build service and function well as build steps; note that some will
+require that you specify an `entrypoint` for the image. Additional details
+regarding each alternative official image are available in the `README.md` for
+the corresponding Cloud Builder.
 
 *   [`docker`](https://hub.docker.com/_/docker/) supports tagged docker versions across multiple platforms
 *   [`gcr.io/google.com/cloudsdktool/cloud-sdk`](https://github.com/GoogleCloudPlatform/cloud-sdk-docker) includes multiple entrypoints:
@@ -74,9 +74,13 @@ for the corresponding Cloud Builder.
 
 # Future Direction
 
-You may have already noticed that most of the images in this repo now provide notices to the
-above alternative images. For the hosted Cloud Build service, we are formulating plans
-surrounding both improved support for existing `cloud-builder` images and documentation for
-alternative community-supported images that may be more appropriate for some users. Both this
-page and the related [open issues](https://github.com/GoogleCloudPlatform/cloud-builders/labels/augmentation)
-will be updated with details soon.
+You may have already noticed that most of the images in this repo now provide
+notices to the above alternative images. For the hosted Cloud Build service, we
+plan on hosting versions of these images that are configured for easy
+compatibility with GCB. The [Beta](Beta) subdirectory defines a set of Beta
+Builders that will soon be available to improve your experience with Cloud
+Builders.
+
+Both this page and the related [open
+issues](https://github.com/GoogleCloudPlatform/cloud-builders/labels/augmentation)
+will be updated with details as they become available.
