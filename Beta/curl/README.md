@@ -1,13 +1,13 @@
 # curl
 
-This `curl` build step is based on the `launcher.gcr.io/google/ubuntu1804` image
-supplied in the Google Cloud Marketplace at
-https://console.cloud.google.com/marketplace/details/ubuntu-os-cloud/ubuntu-xenial.
+This `curl` build step is based on the `curlimages/curl` image maintained by the
+curlimages community on Dockerhub. Visit
+https://hub.docker.com/r/curlimages/curl for details.
 
 The `curlimages` community supports multiple tagged versions of curl across
-multiple operating systems as `curlimages/curl`. While this image is compatible
-with the hosted Cloud Build service, it runs as user `curl_user` and thus may
-not be suitable for all purposes. For details, please visit
+multiple operating systems as `curlimages/curl`. While these images are
+compatible with the hosted Cloud Build service, they run as user `curl_user` and
+thus may not be suitable for all purposes. For details, please visit
 https://hub.docker.com/r/curlimages/curl.
 
 To migrate from `gcr.io/cloud-builders/curl` to this image, make the following
