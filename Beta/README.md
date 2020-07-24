@@ -106,7 +106,7 @@ mitigate against such issues.
 
 Users interested in a more stable experience can await the GA release of these
 Beta Builders. The existing `gcr.io/cloud-builders/...` images will continue to
-be maintained until long after the GA release of these new images.
+be maintained for the foreseeable future.
 
 #### Direct Use of Community-Supported Images
 
