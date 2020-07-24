@@ -99,8 +99,9 @@ follows:
 
 Our analysis of usage of Cloud Builders with the hosted Cloud Build service
 reveals that only a small number of users will experience incompatible changes.
-Please see the `README` file for each builder where we will highlight
-compatibility issues that surface.
+When compatibility issues surface that go beyond the three general issues noted
+above (tool version, `entrypoint`, and OS or platform), we will add notes to the
+relevant `README` for the tool to highlight these issues.
 
 ### Migration Paths
 
