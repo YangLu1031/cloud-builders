@@ -9,6 +9,11 @@ The Cloud Builders defined in this repository will eventually replace those
 currently in use. They are generally -- but not always -- drop-in replacements
 for the existing Cloud Builders.
 
+Users need not take any action to migrate away from the existing Cloud Builders,
+which will be maintained for the foreseeable future. However, we believe that
+migration from the [existing Cloud Builders](..) will offer numerous benefits to
+the users of the hosted Cloud Build service.
+
 ## Advantages
 
 The main advantage to this new set of images comes from the strength of the
