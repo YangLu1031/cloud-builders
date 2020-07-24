@@ -1,1 +1,1 @@
-FROM gcr.io/cloud-builder/gke-deploy
+FROM gcr.io/cloud-builders/gke-deploy
