@@ -41,6 +41,19 @@ for use. Specifically, the following named versions will be available:
   source. Users who would like to pin a more particular version can generally
   use the source image as a drop-in replacement for the Cloud Builder.
 
+## New Images
+
+Migrating to community-maintained images enables us to onboard new tools in the
+Cloud Builders repository. The Beta images include the following tools that were
+not included in the original set of Cloud Builders:
+
+- `[helm](helm)`
+- `[kustomize](kustomize)`
+- `[python](python)`
+- `[setup](setup)`
+- `[skaffold](skaffold)`
+- `[terraform](terraform)`
+
 ## Migration
 
 The [existing set of Cloud Builders](..) is hosted in Google Cloud Repository in
