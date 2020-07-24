@@ -178,7 +178,6 @@ in this directory.
 ## TODO
 
 - Add image for firebase.
-- Migrate gcs-fetcher and gke-deploy to AR.
 - Automate all the things!
 	- set up notifications on failure
 	  https://cloud.google.com/cloud-build/docs/configuring-notifications/configure-smtp
