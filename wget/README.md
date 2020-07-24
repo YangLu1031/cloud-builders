@@ -10,9 +10,8 @@ Substantially similar functionality can be found using `curl`. While `curl`
 does not offer `wget`'s ability to recursively traverse a website, `curl`
 offers substantially more options for more internet protocols. `curl` is also
 available in a variety of versions across multiple platforms in
-community-maintained `curl` images; see the [`curl
-README`](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/curl)
-for details.
+community-maintained `curl` images; see the [`curl README`](../curl) for
+details.
 
 Note that if `curl` is not a better option, `wget` is available in the official
 community-supported [`alpine`](https://hub.docker.com/_/alpine) and
