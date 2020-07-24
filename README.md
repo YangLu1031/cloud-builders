@@ -27,6 +27,9 @@ Builders contributed by the public are available in the [Cloud Builders
 Community
 repo](https://github.com/GoogleCloudPlatform/cloud-builders-community).
 
+A set of Beta Builders are under development; you can browse the future of Cloud
+Builders in the [Beta](Beta) subdirectory.
+
 To file issues and feature requests against these builder images,
 [create an issue in this repo](https://github.com/GoogleCloudPlatform/cloud-builders/issues/new).
 If you are experiencing an issue with the Cloud Build service or
