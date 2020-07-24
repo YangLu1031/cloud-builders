@@ -99,6 +99,8 @@ follows:
 
 Our analysis of usage of Cloud Builders with the hosted Cloud Build service
 reveals that only a small number of users will experience incompatible changes.
+Please see the `README` file for each builder where we will highlight
+compatibility issues that surface.
 
 ### Migration Paths
 
