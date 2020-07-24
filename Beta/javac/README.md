@@ -12,7 +12,7 @@ changes to your `cloudbuild.yaml`:
 
 ```
 - name: 'gcr.io/cloud-builders/javac'
-+ name: '{region}-docker.pkg.dev/cloud-builders/cloud-builders/javac'
++ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/javac'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -24,7 +24,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/cloud-builders/cloud-builders/javac'
+- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/javac'
   args: ['*.java']
 ```
 

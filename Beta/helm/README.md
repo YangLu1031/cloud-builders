@@ -10,7 +10,7 @@ tooling. For details, please visit
 https://github.com/GoogleContainerTools/skaffold.
 
 This image is available as
-`{region}-docker.pkg.dev/cloud-builders/cloud-builders/helm` where {region} is
+`{region}-docker.pkg.dev/gcb-release/cloud-builders/helm` where {region} is
 one of `us`, `europe`, or `asia`. Choose the closest region to where your builds
 are executed.
 
@@ -22,7 +22,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/cloud-builders/cloud-builders/helm'
+- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/helm'
   args: ['get', 'all', '${RELEASE_NAME}']
 ```
 

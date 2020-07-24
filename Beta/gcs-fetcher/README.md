@@ -8,7 +8,7 @@ changes to your `cloudbuild.yaml`:
 
 ```
 - name: 'gcr.io/cloud-builders/gcs-fetcher'
-+ name: '{region}-docker.pkg.dev/cloud-builders/cloud-builders/gcs-fetcher'
++ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/gcs-fetcher'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
