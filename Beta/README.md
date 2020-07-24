@@ -112,9 +112,10 @@ both the existing Cloud Builders and these new Beta Builders by going directly
 to the community-supported container images for the underlying tools.
 
 For example, the Maven Project supports over 100 versioned combinations of
-Maven, Java, JDK/JRE, and platform. You can choose the exact desired combination
-and have complete control over version adoption and migration in the build
-system.
+Maven, Java, JDK/JRE, and platform on
+[DockerHub](https://hub.docker.com/_/maven). You can choose the exact desired
+combination and have complete control over version adoption and migration in the
+build system.
 
 Each tool in the Beta Builders provides example usage for both the Beta Builder
 and the underlying versioned tool.
