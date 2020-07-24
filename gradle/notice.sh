@@ -3,8 +3,8 @@ if [[ $(( $RANDOM % 20 )) -eq 1 ]]; then
   echo '
                    ***** NOTICE *****
 
-Alternative official `gradle` images, including multiple tagged versions across
-multiple platforms, can be found at https://hub.docker.com/_/gradle.
+Information about our Beta Cloud Builders can be found at
+https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/Beta
 
                 ***** END OF NOTICE *****
 '

@@ -3,13 +3,8 @@ if [[ $(( $RANDOM % 20 )) -eq 1 ]]; then
   echo '
                    ***** NOTICE *****
 
-Alternative official `node` images, including multiple tagged versions
-across multiple platforms are maintained by the Node.js Docker Team.
-
-Please note that the `yarn` entrypoint must be specified when using these
-images.
-
-For further details, please visit https://hub.docker.com/_/node.
+Information about our Beta Cloud Builders can be found at
+https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/Beta
 
                 ***** END OF NOTICE *****
 '

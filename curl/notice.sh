@@ -3,10 +3,8 @@ if [[ $(( $RANDOM % 20 )) -eq 1 ]]; then
   echo '
                    ***** NOTICE *****
 
-Supported `curl` images, including multiple tagged versions,
-are available at
-https://console.cloud.google.com/launcher/details/google/ubuntu1604
-and https://hub.docker.com/r/curlimages/curl.
+Information about our Beta Cloud Builders can be found at
+https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/Beta
 
                 ***** END OF NOTICE *****
 '

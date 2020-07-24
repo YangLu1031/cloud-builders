@@ -3,9 +3,8 @@ if [[ $(( $RANDOM % 20 )) -eq 1 ]]; then
   echo '
                    ***** NOTICE *****
 
-Alternative official `docker` images, including multiple versions across
-multiple platforms, are maintained by the Docker Team. For details, please
-visit https://hub.docker.com/_/docker.
+Information about our Beta Cloud Builders can be found at
+https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/Beta
 
                 ***** END OF NOTICE *****
 '
