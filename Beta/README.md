@@ -3,6 +3,13 @@
 This directory previews the upcoming Beta release of Cloud Builders to [Artifact
 Registry](https://cloud.google.com/artifact-registry).
 
+This repository contains sample code for an upcoming Beta release of a new set
+of Cloud Builders. Pre-GA products and features may have limited support, and
+changes to pre-GA products and features may not be compatible with other pre-GA
+versions. For more information, see the [launch stage
+descriptions](https://cloud.google.com/products?hl=en#product-launch-stages) for
+Google Cloud products and services.
+
 ## TL;DR
 
 The Cloud Builders defined in this repository will eventually replace those
