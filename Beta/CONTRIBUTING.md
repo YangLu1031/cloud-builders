@@ -25,6 +25,13 @@ Issues with the hosted Cloud Build service should be reported to Google Cloud
 Support or [filed as new bugs in the public issue
 tracker](https://issuetracker.google.com/issues/new?component=190802&template=1162743).
 
+# Pull Requests
+
+While you should feel free to assign a reviewer to your pull request if you
+happen to know who the appropriate reader is, you need not do so; we will assign
+an owner on receipt of your suggested changes. Emergencies aside, we typically
+respond to pull requests within 2-3 business days once the CLA is signed.
+
 # Contributor License Agreements
 
 Before we can accept your pull requests you'll need to sign a Contributor
