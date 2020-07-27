@@ -29,11 +29,15 @@ Google Cloud Build service to maintain a more up-to-date set of tools available
 for use. Specifically, the following named versions will be available:
 
 - `:latest`: For users who simply want the latest version of a given tool, the
-  `:latest` tag will generally be kept in sync with new releases.
+  `:latest` tag of the released Cloud Builder image will generally be kept in
+  sync with the most recent release of the given tool. Using this tag will keep
+  you up-to-date, albeit at the expense of forfeiting control over the specific
+  tool version in use.
 - `:YYYYMMDD`: In the event of an incompatibility in a new release, a dated
   daily `:YYYYMMDD` tag will be available for pinning to a particular dated
   release. This allows easy debugging and rollback for situations where your
-  build worked fine yesterday and mysteriously broke today. Dated images will be
+  build worked fine yesterday and mysteriously broke today. A given `:YYYYMMDD`
+  image reflects what was `:latest` on the given date. Dated images will be
   deleted after nine months.
 - `:stable`: For users who want to be up-to-date but would like additional
   vetting before adopting a new version, the `:stable` tag will be applied to
@@ -46,7 +50,9 @@ for use. Specifically, the following named versions will be available:
   be deleted after nine months.
 - Other versions. The directory for each Cloud Builder identifies the image
   source. Users who would like to pin a more particular version can generally
-  use the source image as a drop-in replacement for the Cloud Builder.
+  use the source image as a drop-in replacement for the Cloud Builder. Each tool
+  provides an example using the Cloud Builder hosted image as well as a
+  versioned image from the source repository.
 
 ## New Images
 
