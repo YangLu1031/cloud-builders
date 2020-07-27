@@ -17,6 +17,14 @@ Enhancements to maven should be discussed there.
 If you have ideas to help enable stronger compatibility with the hosted Google
 Cloud Build service, please open an issue or send us a pull request.
 
+Bugs in Cloud Builders that are not present in the underlying images should be
+reported in the Issues section in this repository. Bugs that are present in the
+underlying images should be reported to the appropriate source community.
+
+Issues with the hosted Cloud Build service should be reported to Google Cloud
+Support or [filed as new bugs in the public issue
+tracker](https://issuetracker.google.com/issues/new?component=190802&template=1162743).
+
 # Contributor License Agreements
 
 Before we can accept your pull requests you'll need to sign a Contributor
