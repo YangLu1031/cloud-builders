@@ -57,7 +57,6 @@ not included in the original set of Cloud Builders:
 - [`helm`](helm)
 - [`kustomize`](kustomize)
 - [`python`](python)
-- [`setup`](setup)
 - [`skaffold`](skaffold)
 - [`terraform`](terraform)
 
