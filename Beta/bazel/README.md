@@ -35,3 +35,6 @@ steps:
   args: ['build', '//java/com/company/service:server']
   entrypoint: 'bazel'
 ```
+
+This directory contains an `example.yaml` that uses `bazel` to build and run a
+sample Java project.
