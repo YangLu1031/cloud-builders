@@ -36,9 +36,8 @@ steps:
 
 ## Example `cloudbuild.yaml`
 
-This directory contains an
-[`example.yaml`](example.yaml) that uses `helm` to search for wordpress charts.
-It can be executed via:
+This directory contains an [`example.yaml`](example.yaml) that uses `helm` to
+search for wordpress charts.  It can be executed via:
 ```
 gcloud builds submit --config=example.yaml --no-source
 ```
