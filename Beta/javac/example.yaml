@@ -1,0 +1,8 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/javac'
+  args: ['Hello.java']
+  dir: 'example'
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/javac'
+  entrypoint: 'java'
+  args: 'Hello'
+  dir: 'example'

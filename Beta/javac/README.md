@@ -35,3 +35,13 @@ steps:
   args: ['*.java']
   entrypoint: 'javac'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that uses `javac` to
+compile a simple Java program. The second step uses the `java` runtime included
+with the OpenJDK to execute the compiled Java program. The example can be
+executed via:
+```
+gcloud builds submit --config=example.yaml
+```
