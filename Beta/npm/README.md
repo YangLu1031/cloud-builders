@@ -35,3 +35,11 @@ steps:
   args: ['install']
   entrypoint: 'npm'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that installs and runs
+a Node "Hello World" using `npm`. It can be executed via:
+```
+gcloud builds submit --config=example.yaml --no-source
+```
