@@ -1,0 +1,5 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/npm'
+  args: ['install', 'hello-world-npm']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/npm'
+  entrypoint: 'node_modules/hello-world-npm/bin.js'
