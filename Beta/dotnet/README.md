@@ -26,3 +26,11 @@ Usage:
 steps:
 - name: 'us-docker.pkg.dev/gcb-release/cloud-builders/dotnet'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that uses `dotnet` to
+build a simple test application. It can be executed via:
+```
+gcloud builds submit --config=example.yaml
+```

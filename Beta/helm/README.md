@@ -36,9 +36,9 @@ steps:
 
 ## Example `cloudbuild.yaml`
 
-For an example `cloudbuild.yaml` that uses this `helm` build step, see the
-[`example.yaml`](example.yaml) file in this directory. To run it, from within
-this directory execute:
+This directory contains an
+[`example.yaml`](example.yaml) that uses `helm` to search for wordpress charts.
+It can be executed via:
 ```
 gcloud builds submit --config=example.yaml --no-source
 ```

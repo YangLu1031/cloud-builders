@@ -36,5 +36,10 @@ steps:
   entrypoint: 'bazel'
 ```
 
-This directory contains an `example.yaml` that uses `bazel` to build and run a
-sample Java project.
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that uses `bazel` to
+build and run a sample Java project. It can be executed via:
+```
+gcloud builds submit --config=example.yaml --no-source
+```
