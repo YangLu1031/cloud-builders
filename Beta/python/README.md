@@ -29,3 +29,11 @@ steps:
   args: ['hello.py']
   entrypoint: 'python'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that installs and runs
+a simple "Hello World" using `python`. It can be executed via:
+```
+gcloud builds submit --config=example.yaml --no-source
+```
