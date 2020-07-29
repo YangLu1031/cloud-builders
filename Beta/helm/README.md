@@ -33,3 +33,12 @@ steps:
   args: ['get', 'all', '${RELEASE_NAME}']
   entrypoint: 'helm'
 ```
+
+## Example `cloudbuild.yaml`
+
+For an example `cloudbuild.yaml` that uses this `helm` build step, see the
+[`example.yaml`](example.yaml) file in this directory. To run it, from within
+this directory execute:
+```
+gcloud builds submit --config=example.yaml --no-source
+```
