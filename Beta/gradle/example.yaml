@@ -1,0 +1,5 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/gradle'
+  args: ['-q', '-b', 'example/build.gradle', 'hello']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/gradle'
+  args: ['-q', '-b', 'example/build.gradle.kts', 'hello']

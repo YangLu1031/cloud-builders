@@ -1,0 +1,6 @@
+task hello {
+    doLast {
+        println 'Hello world!'
+        println 'I am a Groovy build script!'
+    }
+}
