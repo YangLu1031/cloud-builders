@@ -35,3 +35,13 @@ steps:
   args: ['install']
   entrypoint: 'mvn'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that generates a `mvn`
+project, builds and packages it, and finally executes a glorious "Hello World"
+using the `java` runtime packaged alongside `mvn` in the build step.  It can be
+executed via:
+```
+gcloud builds submit --config=example.yaml --no-source
+```

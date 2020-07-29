@@ -1,0 +1,16 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/mvn'
+  args:
+  - 'archetype:generate'
+  - '-DgroupId=com.mydomain.app'
+  - '-DartifactId=my-app'
+  - '-DarchetypeArtifactId=maven-archetype-quickstart'
+  - '-DarchetypeVersion=1.4'
+  - '-DinteractiveMode=false'
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/mvn'
+  args: ['package']
+  dir: 'my-app'
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/mvn'
+  entrypoint: 'java'
+  args: ['-cp', 'target/my-app-1.0-SNAPSHOT.jar', 'com.mydomain.app.App']
+  dir: 'my-app'
