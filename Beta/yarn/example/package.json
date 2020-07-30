@@ -1,0 +1,10 @@
+{
+  "name": "hellojs",
+  "version": "1.0.0",
+  "description": "Hello world!",
+  "main": "hello.js",
+  "scripts": {
+    "hello": "node hello.js"
+  },
+  "license": "Apache-2.0"
+}

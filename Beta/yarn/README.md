@@ -35,3 +35,11 @@ steps:
   args: ['install']
   entrypoint: 'yarn'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that uses `yarn` to
+run a "Hello World" package. It can be executed via:
+```
+gcloud builds submit --config=example.yaml example
+```
