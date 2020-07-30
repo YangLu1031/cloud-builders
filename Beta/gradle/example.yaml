@@ -1,5 +1,7 @@
 steps:
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/gradle'
-  args: ['-q', '-b', 'example/build.gradle', 'hello']
+  args: ['-q', '-b', 'build.gradle', 'hello']
+  waitFor: '-'
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/gradle'
-  args: ['-q', '-b', 'example/build.gradle.kts', 'hello']
+  args: ['-q', '-b', 'build.gradle.kts', 'hello']
+  waitFor: '-'

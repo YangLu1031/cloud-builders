@@ -41,5 +41,5 @@ steps:
 This directory contains an [`example.yaml`](example.yaml) that runs two simple
 `gradle` build scripts. It can be executed via:
 ```
-gcloud builds submit --config=example.yaml
+gcloud builds submit --config=example.yaml example
 ```
