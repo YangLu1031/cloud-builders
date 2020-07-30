@@ -43,5 +43,5 @@ compile a simple Java program. The second step uses the `java` runtime included
 with the OpenJDK to execute the compiled Java program. The example can be
 executed via:
 ```
-gcloud builds submit --config=example.yaml
+gcloud builds submit --config=example.yaml example
 ```
