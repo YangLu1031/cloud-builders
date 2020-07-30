@@ -1,0 +1,8 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/git'
+  args: ['clone', 'https://github.com/GoogleContainerTools/skaffold']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/skaffold'
+  args: ['build']
+  dir: 'skaffold/examples/getting-started'
+options:
+  env: ["SKAFFOLD_DEFAULT_REPO=gcr.io/$PROJECT_ID"]

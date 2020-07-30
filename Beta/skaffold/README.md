@@ -33,3 +33,11 @@ steps:
   args: ['build']
   entrypoint: 'skaffold'
 ```
+
+## Example `cloudbuild.yaml`
+
+This directory contains an [`example.yaml`](example.yaml) that builds a
+`skaffold` quickstart example. It can be executed via:
+```
+gcloud builds submit --config=example.yaml --no-source
+```
