@@ -32,5 +32,5 @@ steps:
 This directory contains an [`example.yaml`](example.yaml) that uses `dotnet` to
 build a simple test application. It can be executed via:
 ```
-gcloud builds submit --config=example.yaml
+gcloud builds submit --config=example.yaml example
 ```

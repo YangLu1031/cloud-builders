@@ -1,4 +1,3 @@
 steps:
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/dotnet'
   args: ['build']
-  dir: 'example'
