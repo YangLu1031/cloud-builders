@@ -1,0 +1,5 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/terraform'
+  args: ['init']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/terraform'
+  args: ['plan']
