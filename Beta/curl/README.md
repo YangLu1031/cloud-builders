@@ -38,3 +38,16 @@ steps:
   args: ['http://www.example.com/']
   entrypoint: 'curl'
 ```
+
+## Example `listbuilds.yaml`
+
+This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
+uses `curl` to list builds. It runs a shell script to extract a Service
+Account token from the build-time [metadata
+service](https://cloud.google.com/compute/docs/storing-retrieving-metadata),
+then uses this token to authenticate a `curl` request to the `cloudbuild`
+endpoint and list recent builds. You can run this example by running the
+following command in this directory:
+```
+gcloud builds submit --config=listbuilds.yaml --no-source
+```
