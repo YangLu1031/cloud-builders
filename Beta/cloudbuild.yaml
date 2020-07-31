@@ -1,31 +1,29 @@
 # In this directory, run the following command to build all cloud builders.
-# gcloud builds submit --config=nightly-build.yaml --substitutions=_TRIGGER=manual
+# gcloud builds submit
 
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
-  - '-exEuo'
+  - '-eEuo'
   - 'pipefail'
   - '-c'
   - |-
-    # The nightly cron trigger executes from the root of the repository, so the
-    # following conditional enables this build config to work correctly both
-    # from the repository root and from within the `Beta` directory.
+    # Triggers execute from the root of the repository, so the following
+    # conditional enables this build config to work correctly both from the
+    # repository root and from within the `Beta` directory.
     [[ -d Beta ]] && cd Beta
     today=$(date +%Y%m%d) # for dated images
-    template=nightly-template.yaml
-    echo "tags:"             >> "${template}"
-    echo "- \"${BUILD_ID}\"" >> "${template}"
-    echo "- \"${today}\""    >> "${template}"
-    echo "- ${_TRIGGER}"     >> "${template}"
 
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
     for step in ${steps}; do
       stepconfig="cloudbuild-${step}.yaml"
-      cp "${template}" "${stepconfig}"
-      echo "- ${step}" >> "${stepconfig}"
+      cp "${_TEMPLATE}" "${stepconfig}"
+      echo "tags:"             >> "${stepconfig}"
+      echo '- "$${_YYYYMMDD}"' >> "${stepconfig}"
+      echo "- ${_TRIGGER}"     >> "${stepconfig}"
+      echo "- ${step}"         >> "${stepconfig}"
 
       buildid=$(gcloud builds submit --config=${stepconfig} --substitutions=_YYYYMMDD=${today},_STEP=${step} ${step} --async \
         | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
@@ -35,17 +33,20 @@ steps:
       echo "${step} buildID: ${buildid}"
     done
 
-    # Now stream logs while the builds run.
+    # Now wait for builds to complete, failing if any build fails.
+    exitvalue=0
     for step in ${steps}; do
-      echo "Build logs for ${step}:"
-      gcloud builds log --stream ${build_ids[$step]}
-      echo "End of build logs for ${step}."
-      echo
+      echo "Waiting for ${step} build..."
+      ./wait-for-build.sh "${build_ids[$step]}" || exitvalue=1
     done
+    exit $exitvalue
 options:
   env:
   - 'TZ=EST5EDT'
   - 'steps=bazel curl docker dotnet gcloud gcs-fetcher git gke-deploy go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform wget yarn'
 timeout: 1200s
+substitutions: # Default substitution values can be overridden on the command line.
+  '_TRIGGER':  'manual'
+  '_TEMPLATE': 'branch-template.yaml'
 tags:
 - "${_TRIGGER}"
