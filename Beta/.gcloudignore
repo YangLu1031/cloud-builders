@@ -1,7 +1,6 @@
-**/README.md
-*.yaml
+**/*.md
+*.md
 .gcloudignore
-README.md
 add-builder.sh
+cloudbuild.yaml
 setup
-!nightly-template.yaml
