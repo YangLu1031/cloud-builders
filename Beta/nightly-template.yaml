@@ -1,5 +1,8 @@
-# This template is used by nightly-build.yaml to build all of the Cloud
-# Builders.
+# This template is used by cloudbuild.yaml to build and update all of the
+# Cloud Builders.
+# Executing the following command in this directory will use this template to
+# build and push all images:
+# gcloud builds submit --substitutions=_TEMPLATE=nightly-template.yaml
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
