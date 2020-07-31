@@ -1,2 +1,3 @@
-*
-!Dockerfile
+.gcloudignore
+README.md
+listbuilds.yaml
