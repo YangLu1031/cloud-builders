@@ -181,11 +181,19 @@ If you want to host your own version of these images in Artifact Registry in
 your Google Cloud Platform project, use the script in the setup directory. This
 only needs to be done once.
 
-## Build and push the images
+## Build the images
 
-Build and push all images by running:
-`gcloud builds submit --config=nightly-build.yaml`
-in this directory.
+Build all the images in this repository by running the following command in this
+directory:
+```
+gcloud builds submit
+```
+
+To build the images and push them to your Artifact Registry repositories (see
+the [`setup`](setup) subdirectory to set up the appropriate repositories), run:
+```
+gcloud builds submit --substitutions=_TEMPLATE=nightly-template.yaml
+```
 
 ## TODO
 
