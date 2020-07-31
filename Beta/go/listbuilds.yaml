@@ -1,0 +1,7 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/go'
+  args: ['get', '-v', 'google.golang.org/api/cloudbuild/v1']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/go'
+  args: ['run', 'listbuilds.go', '${PROJECT_ID}']
+options:
+  env: 'GOPATH=/workspace/go'
