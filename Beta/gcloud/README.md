@@ -37,3 +37,13 @@ steps:
   args: ['builds', 'list']
   entrypoint: 'gcloud'
 ```
+
+## Example `listbuilds.yaml`
+
+To help you get started with `gcloud` as a build step, this directory contains
+an example [`listbuilds.yaml`](listbuilds.yaml) that uses `gcloud` to list
+builds. You can run this example by running the following command in this
+directory:
+```
+gcloud builds submit --config=listbuilds.yaml --no-source
+```
