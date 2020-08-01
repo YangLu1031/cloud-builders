@@ -36,3 +36,13 @@ steps:
   args: ['get', 'golang.org/x/net/context']
   env: ['GOPATH=/tmp']
 ```
+
+## Example `listbuilds.yaml`
+
+This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
+compiles and runs a `go` program to list builds. The `go` code is in the
+[`example`](example) directory.  You can run this example by running the
+following command in this directory:
+```
+gcloud builds submit --config=listbuilds.yaml example
+```
