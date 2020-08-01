@@ -27,6 +27,7 @@ func main() {
 		log.Fatalf("ListBuilds failed: %v", err)
 	}
 
+	fmt.Println("I'm listing builds from Go! I found", len(resp.Builds), "builds.")
 	for _, b := range resp.Builds {
 		fmt.Println("Build", b.Id, b.Status)
 	}
