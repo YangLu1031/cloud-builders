@@ -25,6 +25,5 @@ steps:
 # Demonstrate that the minimal listbuilds container works.
 - name: 'listbuilds'
   args: ['${PROJECT_ID}']
-  entrypoint: '/usr/local/bin/listbuilds'
 options:
   env: 'GOPATH=/workspace/go'

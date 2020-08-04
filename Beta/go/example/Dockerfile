@@ -2,4 +2,4 @@
 FROM scratch
 COPY ca-certificates.crt /etc/ssl/certs/
 COPY main /usr/local/bin/listbuilds
-ENTRYPOINT "/usr/local/bin/listbuilds"
+ENTRYPOINT ["/usr/local/bin/listbuilds"]
