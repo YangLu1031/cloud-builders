@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"cloud.google.com/go/cloudbuild/apiv1"
+	"cloud.google.com/go/compute/metadata"
 	"google.golang.org/api/iterator"
 	cloudbuildpb "google.golang.org/genproto/googleapis/devtools/cloudbuild/v1"
 )
@@ -18,12 +19,10 @@ func main() {
 	n := flag.Uint("limit", 10, "number of builds to display")
 	flag.Parse()
 
-	if flag.NArg() != 1 {
-		log.Printf("Usage: %v [--limit=<count>] <projectID>", os.Args[0])
-		flag.PrintDefaults()
-		os.Exit(1)
+	projectID, err := metadata.NewClient(nil).ProjectID()
+	if err != nil {
+		log.Fatalf("Unable to discern project: %v", err)
 	}
-	projectID := flag.Arg(0)
 
 	c, err := cloudbuild.NewClient(ctx)
 	if err != nil {

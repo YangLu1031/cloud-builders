@@ -2,4 +2,3 @@ steps:
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
   args: ['build', '--tag', 'listbuilds', '.']
 - name: 'listbuilds'
-  args: ['${PROJECT_ID}']
