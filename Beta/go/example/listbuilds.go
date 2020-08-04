@@ -48,6 +48,6 @@ func main() {
 		fmt.Println("Build", b.Id, b.Status)
 	}
 
-	fmt.Println("Listed", i, "builds.")
+	fmt.Printf("Listed %d builds for project %q.\n", i, projectID)
 	os.Exit(0)
 }
