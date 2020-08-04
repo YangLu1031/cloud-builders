@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -14,10 +15,15 @@ import (
 func main() {
 	ctx := context.Background()
 
-	if len(os.Args) != 2 {
-		log.Fatalf("Usage: %v <projectID>", os.Args[0])
+	n := flag.Uint("limit", 10, "number of builds to display")
+	flag.Parse()
+
+	if flag.NArg() != 1 {
+		log.Printf("Usage: %v [--limit=<count>] <projectID>", os.Args[0])
+		flag.PrintDefaults()
+		os.Exit(1)
 	}
-	projectID := os.Args[1]
+	projectID := flag.Arg(0)
 
 	c, err := cloudbuild.NewClient(ctx)
 	if err != nil {
@@ -31,8 +37,9 @@ func main() {
 
 	req := &cloudbuildpb.ListBuildsRequest{ProjectId: projectID}
 	it := c.ListBuilds(ctx, req)
-	for {
-		b, err := it.Next();
+	var i uint = 0
+	for ; i < *n; i++ {
+		b, err := it.Next()
 		if err == iterator.Done {
 			break
 		}
@@ -42,5 +49,6 @@ func main() {
 		fmt.Println("Build", b.Id, b.Status)
 	}
 
+	fmt.Println("Listed", i, "builds.")
 	os.Exit(0)
 }
