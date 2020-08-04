@@ -6,7 +6,9 @@ import (
 	"log"
 	"os"
 
-	"google.golang.org/api/cloudbuild/v1"
+	"cloud.google.com/go/cloudbuild/apiv1"
+	"google.golang.org/api/iterator"
+	cloudbuildpb "google.golang.org/genproto/googleapis/devtools/cloudbuild/v1"
 )
 
 func main() {
@@ -17,18 +19,26 @@ func main() {
 	}
 	projectID := os.Args[1]
 
-	svc, err := cloudbuild.NewService(ctx)
+	c, err := cloudbuild.NewClient(ctx)
 	if err != nil {
-		log.Fatalf("Unable to instantiate cloudbuild service: %v", err)
+		log.Fatalf("Unable to instantiate cloudbuild client: %v", err)
 	}
+	defer func() {
+		if err := c.Close(); err != nil {
+			log.Fatalf("Close() failed: %v", err)
+		}
+	}()
 
-	resp, err := svc.Projects.Builds.List(projectID).Context(ctx).Do()
-	if err != nil {
-		log.Fatalf("ListBuilds failed: %v", err)
-	}
-
-	fmt.Println("I'm listing builds from Go! I found", len(resp.Builds), "builds.")
-	for _, b := range resp.Builds {
+	req := &cloudbuildpb.ListBuildsRequest{ProjectId: projectID}
+	it := c.ListBuilds(ctx, req)
+	for {
+		b, err := it.Next();
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			log.Fatalf("ListBuilds failure: %v", err)
+		}
 		fmt.Println("Build", b.Id, b.Status)
 	}
 

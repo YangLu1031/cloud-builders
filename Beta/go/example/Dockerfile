@@ -1,7 +1,11 @@
-# Build the `listbuilds` executable.
+# Build a staticly-linked `listbuilds` executable suitable for running in an
+# otherwise (almost) empty container..
 FROM us-docker.pkg.dev/bendory-cloud-builders/cloud-builders/go as builder
-RUN go get -v google.golang.org/api/cloudbuild/v1
 COPY listbuilds.go .
+RUN go get -v \
+	cloud.google.com/go/cloudbuild/apiv1 \
+	google.golang.org/api/iterator \
+	google.golang.org/genproto/googleapis/devtools/cloudbuild/v1
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main listbuilds.go
 
 # Package `listbuilds` into a minimalist container.
