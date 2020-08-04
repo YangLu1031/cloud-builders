@@ -1,29 +1,5 @@
 steps:
-# Get build dependencies.
-- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/go'
-  args: ['get', '-v', 'google.golang.org/api/cloudbuild/v1']
-  id: 'get'
-# Build and run listbuilds.
-- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/go'
-  args: ['run', 'listbuilds.go', '${PROJECT_ID}']
-# Build listbuilds for packaging in a minimal container.
-- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/go'
-  args: ['build', '-a', '-installsuffix', 'cgo', '-o', 'main', 'listbuilds.go']
-  env:  ['CGO_ENABLED=0', 'GOOS=linux']
-  waitFor: ['get']
-  id: 'bld'
-# Container will need certificates to make API calls.
-- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/go'
-  entrypoint: 'cp'
-  args: ['/etc/ssl/certs/ca-certificates.crt', '.']
-  waitFor: 'get'
-  id: 'cp'
-# Build minimal listbuilds container.
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
   args: ['build', '--tag', 'listbuilds', '.']
-  waitFor: ['cp', 'bld']
-# Demonstrate that the minimal listbuilds container works.
 - name: 'listbuilds'
   args: ['${PROJECT_ID}']
-options:
-  env: 'GOPATH=/workspace/go'

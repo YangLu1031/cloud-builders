@@ -46,16 +46,16 @@ following command in this directory:
 ```
 gcloud builds submit --config=listbuilds.yaml example
 ```
-This `listbuilds.yaml`:
+The example builds `listbuilds`, packages it into a minimalist Docker container,
+and runs the built container to confirm that it works.
 
-1. fetches `go` dependencies. Note the global `GOPATH` setting which applies to
-   all build steps and places the `GOPATH` into the persistent `/workspace`
-   directory.
-1. builds and runs a `go` executable using the `go` builder.
-1. cross-compiles a `go` executable for packaging into a minimalist `Docker`
-   container.
-1. performs a `docker build` to package the executable; note that the packaging
-   also includes `ca-certificates.crt` which are not present in the `scratch`
+The [`Dockerfile`](example/Dockerfile) used does a multi-stage Docker build that
+results in a minimalist container for the given executable. To do this, it:
+
+1. fetches `go` dependencies.
+1. cross-compiles the `listbuilds` executable for packaging into a minimalist
+   `Docker` container that is based on the empty `scratch` image.
+1. Packages the executable; note that the packaging also includes
+   `ca-certificates.crt` which are not otherwise present in the `scratch`
    container but are needed by the `listbuilds` executable to make Google API
-   calls. See the [`Dockerfile`](example/Dockerfile) for details.
-1. runs the built `Docker` container to confirm that it works.
+   calls.
