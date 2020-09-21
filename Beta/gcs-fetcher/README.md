@@ -6,7 +6,7 @@ is regionally distributed alongside our Beta Builders.
 To migrate from `gcr.io/cloud-builders/gcs-fetcher` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/gcs-fetcher'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/gcs-fetcher'
 ```

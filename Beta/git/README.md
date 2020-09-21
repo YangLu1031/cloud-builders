@@ -12,7 +12,7 @@ image.
 To migrate from `gcr.io/cloud-builders/git` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/git'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/git'
 ```

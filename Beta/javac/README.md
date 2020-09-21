@@ -10,7 +10,7 @@ For details, please visit https://hub.docker.com/_/openjdk.
 To migrate from `gcr.io/cloud-builders/javac` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/javac'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/javac'
 ```
