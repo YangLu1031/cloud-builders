@@ -6,7 +6,7 @@ is regionally distributed alongside our Beta Builders.
 To migrate from `gcr.io/cloud-builders/gke-deploy` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/gke-deploy'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/gke-deploy'
 ```

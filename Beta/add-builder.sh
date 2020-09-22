@@ -30,7 +30,7 @@ http://TODO
 To migrate from \`gcr.io/cloud-builders/$1\` to this image, make the following
 changes to your \`cloudbuild.yaml\`:
 
-\`\`\`
+\`\`\`diff
 - name: 'gcr.io/cloud-builders/$1'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/$1'
 \`\`\`

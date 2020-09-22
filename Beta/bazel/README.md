@@ -10,7 +10,7 @@ For details, please visit gcr.io/cloud-marketplace-containers/google/bazel.
 To migrate from `gcr.io/cloud-builders/bazel` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/bazel'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/bazel'
 ```
