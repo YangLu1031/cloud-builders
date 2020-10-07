@@ -9,7 +9,7 @@ platforms. For details, please visit https://hub.docker.com/_/golang.
 To migrate from `gcr.io/cloud-builders/go` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/go'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/go'
 ```

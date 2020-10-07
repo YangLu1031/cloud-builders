@@ -10,7 +10,7 @@ for details.
 To migrate from `gcr.io/cloud-builders/npm` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/npm'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/npm'
 ```

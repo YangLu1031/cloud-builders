@@ -12,7 +12,7 @@ https://github.com/GoogleCloudPlatform/cloud-sdk-docker.
 To migrate from `gcr.io/cloud-builders/gsutil` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/gsutil'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/gsutil'
 ```

@@ -12,7 +12,7 @@ https://github.com/GoogleCloudPlatform/cloud-sdk-docker.
 To migrate from `gcr.io/cloud-builders/kubectl` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/kubectl'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/kubectl'
 ```
