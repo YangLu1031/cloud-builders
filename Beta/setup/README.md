@@ -11,7 +11,7 @@ https://cloud.google.com/artifact-registry/docs/docker/quickstart#before-you-beg
 
 ## Run this script
 
-```
+```bash
 # Enable the APIs
 gcloud services enable cloudbuild.googleapis.com --async
 gcloud services enable artifactregistry.googleapis.com
@@ -25,9 +25,13 @@ done
 
 ## Confirm that the repositories were created
 You can see all your repositories across all locations with:
-`gcloud beta artifacts repositories list`
+```bash
+gcloud beta artifacts repositories list
+```
 
 ## Set up auth for local docker use (optional)
 This command configures your local installation to use Application Default
 Credentials with Artifact Registry:
-`gcloud auth configure-docker us-docker.pkg.dev,europe-docker.pkg.dev,asia-docker.pkg.dev --quiet`
+```bash
+gcloud auth configure-docker us-docker.pkg.dev,europe-docker.pkg.dev,asia-docker.pkg.dev --quiet
+```
