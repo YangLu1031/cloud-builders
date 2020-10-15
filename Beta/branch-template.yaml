@@ -1,0 +1,14 @@
+# This template is used by cloudbuild.yaml to build all of the Cloud Builders
+# without pushing any images. It effectively is a test that everything builds
+# correctly.
+# Executing the following command in this directory will use this template to
+# build all images:
+# gcloud builds submit
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--tag=us-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}'
+  - '.'
+timeout: 900s

@@ -1,0 +1,14 @@
+# This example is based on https://docs.bazel.build/versions/master/tutorial/java.html
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel'
+  entrypoint: 'git'
+  args: [ 'clone', 'https://github.com/bazelbuild/examples' ]
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel'
+  args: [ 'build', '//:ProjectRunner' ]
+  dir: '/workspace/examples/java-tutorial'
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel'
+  args: [ 'run', '//:ProjectRunner' ]
+  dir: '/workspace/examples/java-tutorial'
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/bazel'
+  args: [ 'query', '--notool_deps', '--noimplicit_deps', 'deps(//:ProjectRunner)', '--output', 'graph' ]
+  dir: '/workspace/examples/java-tutorial'

@@ -1,0 +1,6 @@
+**/*.md
+*.md
+.gcloudignore
+add-builder.sh
+cloudbuild.yaml
+setup

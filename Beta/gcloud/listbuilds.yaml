@@ -1,0 +1,3 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/gcloud'
+  args: ['builds', 'list']
