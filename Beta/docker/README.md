@@ -10,7 +10,7 @@ https://hub.docker.com/_/docker.
 To migrate from `gcr.io/cloud-builders/docker` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/docker'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/docker'
 ```

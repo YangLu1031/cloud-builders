@@ -10,7 +10,7 @@ platforms. Please visit https://hub.docker.com/_/maven for details.
 To migrate from `gcr.io/cloud-builders/mvn` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/mvn'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/mvn'
 ```

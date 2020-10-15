@@ -10,7 +10,7 @@ for details.
 To migrate from `gcr.io/cloud-builders/yarn` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/yarn'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/yarn'
 ```

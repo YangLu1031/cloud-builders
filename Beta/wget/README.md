@@ -12,7 +12,7 @@ in a variety of versions across multiple platforms in community-maintained
 To migrate from `gcr.io/cloud-builders/wget` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/wget'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/wget'
 ```

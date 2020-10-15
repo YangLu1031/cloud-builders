@@ -13,7 +13,7 @@ https://hub.docker.com/r/curlimages/curl.
 To migrate from `gcr.io/cloud-builders/curl` to this image, make the following
 changes to your `cloudbuild.yaml`:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/curl'
 + name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/curl'
 ```
