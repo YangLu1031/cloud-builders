@@ -19,7 +19,12 @@ steps:
     declare -A build_ids
     for step in ${steps}; do
       stepconfig="cloudbuild-${step}.yaml"
-      cp "${_TEMPLATE}" "${stepconfig}"
+      # Steps can use custom templates if desired.
+      if [[ -e "${step}/${_TEMPLATE}" ]]; then
+        cp "${step}/${_TEMPLATE}" "${stepconfig}"
+      else
+        cp "${_TEMPLATE}" "${stepconfig}"
+      fi
       echo "tags:"             >> "${stepconfig}"
       echo '- "$${_YYYYMMDD}"' >> "${stepconfig}"
       echo "- ${_TRIGGER}"     >> "${stepconfig}"
