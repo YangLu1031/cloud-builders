@@ -36,6 +36,16 @@ steps:
   entrypoint: 'mvn'
 ```
 
+## Python, Cloud SDK, and App Engine use
+
+The community-supported `maven` image no longer ships with `python`; this breaks
+the [App Engine `maven`
+plugin](https://cloud.google.com/appengine/docs/standard/java/using-maven).
+
+This builder uses [`Dockerfile.appengine`](Dockerfile.appengine) to build an App
+Engine-compatible image with the `:appengine` tag; it is available at
+`{region}-docker.pkg.dev/gcb-release/cloud-builders/mvn:appengine`.
+
 ## Example `cloudbuild.yaml`
 
 This directory contains an [`example.yaml`](example.yaml) that generates a `mvn`
