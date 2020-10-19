@@ -19,7 +19,7 @@ for location in us europe asia; do
   # Create the Repository
   gcloud beta artifacts repositories create cloud-builders --repository-format=docker --location=$location
   # Make the repository publicly readable
-  gcloud beta artifacts repositories add-iam-policy-binding cloud-builders --member='allUsers' --role='roles/artifactregistry.reader' --location=$location
+  gcloud beta artifacts repositories add-iam-policy-binding cloud-builders --member='allAuthenticatedUsers' --role='roles/artifactregistry.reader' --location=$location
 done
 ```
 
