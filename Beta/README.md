@@ -81,7 +81,7 @@ namespace `{region}-docker.pkg.dev/gcb-release/cloud-builders/...` where
 a given Cloud Builder used on the hosted Cloud Build service, just change your
 Build Step like this:
 
-```
+```diff
 - name: 'gcr.io/cloud-builders/$TOOLNAME'
 + name: '$REGION-docker.pkg.dev/gcb-release/cloud-builders/$TOOLNAME'
 ```
@@ -165,9 +165,10 @@ useful with the hosted service. As usage grew, we augmented that set of Cloud
 Builders with the [Cloud Builders Community
 respository](https://github.com/GoogleCloudPlatform/cloud-builders-community).
 
-Since then, the adoption of containerized tools has grown exponentially, and
-the containerized-tool model is now the standard that we see in numerous
-cloud-based CI/CD systems. Along with the adoption of the model, communities have formed to support well-maintained versions of most development tools.
+Since then, the adoption of containerized tools has grown exponentially, and the
+containerized-tool model is now the standard that we see in numerous cloud-based
+CI/CD systems. Along with the adoption of the model, communities have formed to
+support well-maintained versions of most development tools.
 
 ------
 # Hosting Your Own Builders
@@ -185,13 +186,13 @@ only needs to be done once.
 
 Build all the images in this repository by running the following command in this
 directory:
-```
+```bash
 gcloud builds submit
 ```
 
 To build the images and push them to your Artifact Registry repositories (see
 the [`setup`](setup) subdirectory to set up the appropriate repositories), run:
-```
+```bash
 gcloud builds submit --substitutions=_TEMPLATE=nightly-template.yaml
 ```
 
