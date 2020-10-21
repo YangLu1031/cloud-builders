@@ -47,15 +47,15 @@ packages installed into the `GOPATH` will be available to all build steps.
 
 This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
 compiles and runs a `go` program to list builds. The `go` code is in the
-[`example`](example) directory.  You can run this example by running the
+[`listbuilds`](listbuilds) directory.  You can run this example by running the
 following command in this directory:
 ```
-gcloud builds submit --config=listbuilds.yaml example
+gcloud builds submit --config=listbuilds.yaml listbuilds
 ```
 The example builds `listbuilds`, packages it into a minimalist Docker container,
 and runs the built container to confirm that it works.
 
-The [`Dockerfile`](example/Dockerfile) used does a multi-stage Docker build that
+The [`Dockerfile`](listbuilds/Dockerfile) used does a multi-stage Docker build that
 results in a minimalist container for the given executable. To do this, it:
 
 1. uses `go get` to fetch dependencies.
