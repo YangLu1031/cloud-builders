@@ -55,3 +55,13 @@ executed via:
 ```
 gcloud builds submit --config=example.yaml --no-source
 ```
+
+## Example `listbuilds.yaml`
+
+This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
+compiles and runs a Java program to list builds. The Java code and `maven`
+configuration is in the [`listbuilds`](listbuilds) directory.  You can run this
+example by running the following command in this directory:
+```
+gcloud builds submit --config=listbuilds.yaml listbuilds
+```
