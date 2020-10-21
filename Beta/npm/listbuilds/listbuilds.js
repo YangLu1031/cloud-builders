@@ -9,10 +9,7 @@ async function listBuilds(
 
   const cb = new CloudBuildClient();
 
-  const request = {
-      projectId: projectId,
-      pageSize: 10,
-  };
+  const request = {projectId};
 
   const [result] = await cb.listBuilds(request);
   console.table(result, ['id', 'status']);
