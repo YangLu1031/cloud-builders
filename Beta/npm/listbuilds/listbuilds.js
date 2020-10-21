@@ -16,13 +16,14 @@ async function listBuilds(
 
   // What project should we list triggers for?
   const request = {
-    projectId,
+      projectId: projectId,
+      pageSize: 10,
   };
 
   const [result] = await cb.listBuilds(request);
-  console.info(JSON.stringify(result, null, 2));
+  console.table(result, ['id', 'status']);
 }
-// [END cloudbuild_list_build_triggers]
+// [END cloudbuild_list_builds]
 
 const args = process.argv.slice(2);
 listBuilds(...args).catch(console.error);
