@@ -9,8 +9,7 @@ def listbuilds(project_id):
 
     i = 0
     for b in builds:
-        # TODO: figure out how to make status display as a string.
-        print('{} {}'.format(b.id, b.status))
+        print("Build", b.id, b.status.name)
         i += 1
         if i == 10:
             break
