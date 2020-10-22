@@ -41,9 +41,9 @@ gcloud builds submit --config=example.yaml --no-source
 ## Example `listbuilds.yaml`
 
 This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
-uses a `python` script to list builds. The code is in the
-[`listbuilds`](listbuilds) directory.  You can run this example by running the
-following command in this directory:
+builds a Docker container containing a `python` script to list builds. The code
+is in the [`listbuilds`](listbuilds) directory.  You can run this example by
+running the following command in this directory:
 ```bash
 gcloud builds submit --config=listbuilds.yaml listbuilds
 ```
