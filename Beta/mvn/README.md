@@ -52,7 +52,7 @@ This directory contains an [`example.yaml`](example.yaml) that generates a `mvn`
 project, builds and packages it, and finally executes a glorious "Hello World"
 using the `java` runtime packaged alongside `mvn` in the build step.  It can be
 executed via:
-```
+```bash
 gcloud builds submit --config=example.yaml --no-source
 ```
 
@@ -62,6 +62,6 @@ This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
 compiles and runs a Java program to list builds. The Java code and `maven`
 configuration is in the [`listbuilds`](listbuilds) directory.  You can run this
 example by running the following command in this directory:
-```
+```bash
 gcloud builds submit --config=listbuilds.yaml listbuilds
 ```
