@@ -1,6 +1,4 @@
 steps:
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
   args: ['build', '--tag', 'listbuilds', '.']
-# TODO: figure out how to divine the $PROJECT_ID in python.
 - name: 'listbuilds'
-  args: ['$PROJECT_ID']

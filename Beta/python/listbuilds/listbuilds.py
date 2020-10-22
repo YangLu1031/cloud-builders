@@ -1,4 +1,6 @@
 import sys
+
+from google import auth
 from google.cloud.devtools.cloudbuild_v1.services.cloud_build import client
 
 def listbuilds(project_id):
@@ -18,4 +20,5 @@ def listbuilds(project_id):
 
 
 if __name__ == '__main__':
-    listbuilds(sys.argv[1])
+    _, project_id = auth.default()
+    listbuilds(project_id)
