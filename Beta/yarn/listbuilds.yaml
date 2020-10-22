@@ -1,0 +1,6 @@
+steps:
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/yarn'
+  args: ['add', '@google-cloud/cloudbuild']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/yarn'
+  entrypoint: 'node'
+  args: ['listbuilds.js']
