@@ -1,6 +1,6 @@
 'use strict';
 
-// usage: node list-builds.js
+// usage: node listbuilds.js
 
 async function listBuilds() {
   const gcpMetadata = require('gcp-metadata');
