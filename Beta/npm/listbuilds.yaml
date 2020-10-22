@@ -2,7 +2,5 @@ steps:
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/npm'
   args: ['install', '@google-cloud/cloudbuild']
 - name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/npm'
-  args: ['install', '--save', 'gcp-metadata']
-- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/npm'
   entrypoint: 'node'
   args: ['listbuilds.js']
