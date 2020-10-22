@@ -40,6 +40,16 @@ steps:
 
 This directory contains an [`example.yaml`](example.yaml) that uses `yarn` to
 run a "Hello World" package. It can be executed via:
-```
+```bash
 gcloud builds submit --config=example.yaml example
+```
+
+## Example `listbuilds.yaml`
+
+This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
+uses `yarn` to build and run a Node.js script to list builds. The code is in the
+[`listbuilds`](listbuilds) directory.  You can run this example by running the
+following command in this directory:
+```bash
+gcloud builds submit --config=listbuilds.yaml listbuilds
 ```
