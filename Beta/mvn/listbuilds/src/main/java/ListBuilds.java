@@ -1,14 +1,15 @@
 import java.io.IOException;
+
+import com.google.cloud.ServiceOptions;
 import com.google.cloud.devtools.cloudbuild.v1.CloudBuildClient;
 import com.google.cloudbuild.v1.Build;
 
-
 public class ListBuilds {
     public static void main(String[] args) {
-		int n = 0;
-		String projectId = args[0];
-		int limit = Integer.parseInt(args[1]);
+		int limit = Integer.parseInt(args[0]);
+		String projectId = ServiceOptions.getDefaultProjectId();
 
+		int n = 0;
         try (CloudBuildClient cb = CloudBuildClient.create()) {
             for (Build b : cb.listBuilds(projectId, "").iterateAll()) {
                 System.out.printf("Build: %s %s\n", b.getId(), b.getStatus());

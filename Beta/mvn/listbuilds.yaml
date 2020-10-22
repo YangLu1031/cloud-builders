@@ -4,4 +4,4 @@ steps:
   args: ['-q', 'compile']
 - name: 'us-docker.pkg.dev/bendory-cloud-builders/cloud-builders/mvn'
   entrypoint: 'mvn'
-  args: ['-q', 'exec:java', '-Dexec.args=$PROJECT_ID 10']
+  args: ['-q', 'exec:java', '-Dexec.args=10']
