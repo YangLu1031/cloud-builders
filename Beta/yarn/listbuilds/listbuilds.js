@@ -1,7 +1,5 @@
 'use strict';
 
-// usage: node listbuilds.js
-
 async function listBuilds() {
   const gcpMetadata = require('gcp-metadata');
   const projectId = await gcpMetadata.project('project-id');
@@ -9,10 +7,13 @@ async function listBuilds() {
   const {CloudBuildClient} = require('@google-cloud/cloudbuild');
   const cb = new CloudBuildClient();
 
-  const request = {projectId};
-  const [result] = await cb.listBuilds(request);
+  const [result] = await cb.listBuilds({projectId});
 
-  console.table(result, ['id', 'status']);
+  var i = 0;
+  for (i = 0; i < 10 && i < result.length; i++) {
+    console.log("Build %s %s", result[i].id, result[i].status)
+  }
+  console.log("Listed %d builds for project %s.", i, projectId)
 }
 
 listBuilds().catch(console.error);
