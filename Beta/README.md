@@ -203,3 +203,5 @@ gcloud builds submit --substitutions=_TEMPLATE=nightly-template.yaml
 	- set up notifications on failure
 	  https://cloud.google.com/cloud-build/docs/configuring-notifications/configure-smtp
     - set up PR builds
+	- set up tests prior to push
+	- set up `:stable` tags
