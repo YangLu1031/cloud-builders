@@ -6,7 +6,10 @@ import com.google.cloudbuild.v1.Build;
 
 public class ListBuilds {
     public static void main(String[] args) {
-		int limit = Integer.parseInt(args[0]);
+		int limit = 10;
+		if (args.length == 1) {
+			limit = Integer.parseInt(args[0]);
+		}
 		String projectId = ServiceOptions.getDefaultProjectId();
 
 		int n = 0;
