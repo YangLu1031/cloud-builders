@@ -1,5 +1,4 @@
 steps:
-- name: 'us-docker.pkg.dev/bendory-cloud-builders/cloud-builders/mvn'
-  args: ['-q', 'compile']
-- name: 'us-docker.pkg.dev/bendory-cloud-builders/cloud-builders/mvn'
-  args: ['-q', 'exec:java', '-Dexec.args=10']
+- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
+  args: ['build', '--tag', 'listbuilds', '.']
+- name: 'listbuilds'
