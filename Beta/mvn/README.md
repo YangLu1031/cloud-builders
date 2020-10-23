@@ -65,3 +65,5 @@ example by running the following command in this directory:
 ```bash
 gcloud builds submit --config=listbuilds.yaml listbuilds
 ```
+The example builds `listbuilds.jar`, packages it into a Docker container with an
+installed JRE, and then executes the built container to confirm that it works.
