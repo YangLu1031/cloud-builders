@@ -49,7 +49,7 @@ This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
 compiles and runs a `go` program to list builds. The `go` code is in the
 [`listbuilds`](listbuilds) directory.  You can run this example by running the
 following command in this directory:
-```
+```bash
 gcloud builds submit --config=listbuilds.yaml listbuilds
 ```
 The example builds `listbuilds`, packages it into a minimalist Docker container,
