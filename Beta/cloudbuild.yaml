@@ -17,23 +17,39 @@ steps:
 
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
-    for step in ${steps}; do
-      images=''
-      for r in ${_REGISTRIES}; do
-        images="${r}/${step} ${images}"
-        images="${images} ${r}/${step}:\$${_YYYYMMDD}"
-      done
-
+    for step in ${steps}; do #step start loop
+      pushImages=''
       template="${step}.yaml"
-      echo "steps:"                                 >  "${template}"
-      echo "- name: 'gcr.io/cloud-builders/docker'" >> "${template}"
-      echo "  args:"                                >> "${template}"
-      echo "  - 'build'"                            >> "${template}"
+      echo "steps:" > "${template}"
 
-      for t in ${images}; do
-        echo "  - '--tag=${t}'" >> "${template}"
-      done
-      echo "  - '.'" >> "${template}"
+      for dockerfile in ${step}/Dockerfile*; do #dockerfile start loop
+        images=''
+        IFS=. read _ tag <<< "${dockerfile}"
+
+        s1=''
+        s2=':$${_YYYYMMDD}'
+        if [[ -n "${tag}" ]]; then
+          s1=":${tag}"
+          s2=":${tag}-\$${_YYYYMMDD}"
+        fi
+
+        for r in ${_REGISTRIES}; do
+          images="${images} ${r}/${step}${s1}"
+          images="${images} ${r}/${step}${s2}"
+        done
+
+        echo "- name: 'gcr.io/cloud-builders/docker'" >> "${template}"
+        echo "  args:"                                >> "${template}"
+        echo "  - 'build'"                            >> "${template}"
+        echo "  - '-f'"                               >> "${template}"
+        echo "  - '$(basename ${dockerfile})'"        >> "${template}"
+
+        for image in ${images}; do
+          echo "  - '--tag=${image}'" >> "${template}"
+        done
+        echo "  - '.'" >> "${template}"
+        pushImages="${pushImages} ${images}"
+      done #dockerfile end loop
 
       echo "timeout: 900s"   >> "${template}"
       echo "tags:"           >> "${template}"
@@ -43,8 +59,8 @@ steps:
 
       if [[ "${_PUSH}" == "true" ]]; then
         echo "images:" >> "${template}"
-        for t in ${images}; do
-          echo "- '${t}'" >> "${template}"
+        for image in ${pushImages}; do
+          echo "- '${image}'" >> "${template}"
         done
       fi
 
@@ -54,7 +70,7 @@ steps:
 
       build_ids[${step}]="${buildid}"
       echo "${step} buildID: ${buildid}"
-    done
+    done #step end loop
 
     # Now wait for builds to complete, failing if any single build fails.
     exitvalue=0
