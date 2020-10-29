@@ -15,24 +15,17 @@ steps:
     [[ -d Beta ]] && cd Beta
     today=$(date +%Y%m%d) # for dated images
 
+    echo "tags:"         >> "${_TEMPLATE}"
+    echo "- '${today}'"  >> "${_TEMPLATE}"
+    echo "- ${_TRIGGER}" >> "${_TEMPLATE}"
+    echo '- "$${_STEP}"' >> "${_TEMPLATE}"
+
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
     for step in ${steps}; do
-      stepconfig="cloudbuild-${step}.yaml"
-      # Steps can use custom templates if desired.
-      if [[ -e "${step}/${_TEMPLATE}" ]]; then
-        cp "${step}/${_TEMPLATE}" "${stepconfig}"
-      else
-        cp "${_TEMPLATE}" "${stepconfig}"
-      fi
-      echo "tags:"             >> "${stepconfig}"
-      echo '- "$${_YYYYMMDD}"' >> "${stepconfig}"
-      echo "- ${_TRIGGER}"     >> "${stepconfig}"
-      echo "- ${step}"         >> "${stepconfig}"
-
-      buildid=$(gcloud builds submit --config=${stepconfig} --substitutions=_YYYYMMDD=${today},_STEP=${step} ${step} --async \
+      buildid=$(gcloud builds submit --config=${_TEMPLATE} --substitutions=_YYYYMMDD=${today},_STEP=${step} ${step} --async \
         | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
-      cat /tmp/${step} # All output to main buildlog.
+      cat /tmp/${step} # Log output to main buildlog.
 
       build_ids[${step}]="${buildid}"
       echo "${step} buildID: ${buildid}"
