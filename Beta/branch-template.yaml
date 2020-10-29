@@ -9,6 +9,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
-  - '--tag=us-docker.pkg.dev/$PROJECT_ID/cloud-builders/${_STEP}'
+  - '--tag=just-build-no-push/${_STEP}'
   - '.'
 timeout: 900s
