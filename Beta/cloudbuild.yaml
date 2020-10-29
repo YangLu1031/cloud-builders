@@ -15,23 +15,48 @@ steps:
     [[ -d Beta ]] && cd Beta
     today=$(date +%Y%m%d) # for dated images
 
-    echo "tags:"         >> "${_TEMPLATE}"
-    echo "- '${today}'"  >> "${_TEMPLATE}"
-    echo "- ${_TRIGGER}" >> "${_TEMPLATE}"
-    echo '- "$${_STEP}"' >> "${_TEMPLATE}"
-
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
     for step in ${steps}; do
-      buildid=$(gcloud builds submit --config=${_TEMPLATE} --substitutions=_YYYYMMDD=${today},_STEP=${step} ${step} --async \
-        | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
+      images=''
+      for r in ${_REGISTRIES}; do
+        images="${r}/${step} ${images}"
+        images="${images} ${r}/${step}:\$${_YYYYMMDD}"
+      done
+
+      template="${step}.yaml"
+      echo "steps:"                                 >  "${template}"
+      echo "- name: 'gcr.io/cloud-builders/docker'" >> "${template}"
+      echo "  args:"                                >> "${template}"
+      echo "  - 'build'"                            >> "${template}"
+
+      for t in ${images}; do
+        echo "  - '--tag=${t}'" >> "${template}"
+      done
+      echo "  - '.'" >> "${template}"
+
+      echo "timeout: 900s"   >> "${template}"
+      echo "tags:"           >> "${template}"
+      echo "- '${today}'"    >> "${template}"
+      echo "- ${_TRIGGER}"   >> "${template}"
+      echo "- ${step}"       >> "${template}"
+
+      if [[ "${_PUSH}" == "true" ]]; then
+        echo "images:" >> "${template}"
+        for t in ${images}; do
+          echo "- '${t}'" >> "${template}"
+        done
+      fi
+
+      buildid=$(gcloud builds submit --config=${template} --substitutions=_YYYYMMDD=${today} ${step} --async \
+          | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
       cat /tmp/${step} # Log output to main buildlog.
 
       build_ids[${step}]="${buildid}"
       echo "${step} buildID: ${buildid}"
     done
 
-    # Now wait for builds to complete, failing if any build fails.
+    # Now wait for builds to complete, failing if any single build fails.
     exitvalue=0
     for step in ${steps}; do
       echo "Waiting for ${step} build..."
@@ -44,7 +69,8 @@ options:
   - 'steps=bazel curl docker dotnet gcloud gcs-fetcher git gke-deploy go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform wget yarn'
 timeout: 1200s
 substitutions: # Default substitution values can be overridden on the command line.
-  '_TRIGGER':  'manual'
-  '_TEMPLATE': 'branch-template.yaml'
+  '_TRIGGER':    'manual'
+  '_REGISTRIES': 'just-build-no-push'
+  '_PUSH':       'false'
 tags:
 - "${_TRIGGER}"
