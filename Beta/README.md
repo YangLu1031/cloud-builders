@@ -171,6 +171,23 @@ CI/CD systems. Along with the adoption of the model, communities have formed to
 support well-maintained versions of most development tools.
 
 ------
+## Adding Builders
+
+To add a new builder:
+
+- Add an appropriately-named sub-directory.
+- Add a `Dockerfile`, `README.md`, and `.gcloudignore` in it.
+- Add it to `cloudbuild.yaml` in this directory.
+- Profit!
+
+### Adding additional tooling to a builder
+
+Sometimes it is advantageous to have multiple versions of a builder; for
+example, [`mvn`](mvn) supports a `mvn:appengine` image with a pre-installed App
+Engine plug-in. To add a specialized version with additional tooling, just add
+another `Dockerfile` -- like `Dockerfile.appengine` -- in the builder directory.
+
+------
 # Hosting Your Own Builders
 
 This section is for users who want to host their own versions of the builders
@@ -193,7 +210,14 @@ gcloud builds submit
 To build the images and push them to your Artifact Registry repositories (see
 the [`setup`](setup) subdirectory to set up the appropriate repositories), run:
 ```bash
-gcloud builds submit --substitutions=_TEMPLATE=nightly-template.yaml
+gcloud builds submit \
+    --substitutions=_PUSH=true,_REGISTRIES=us-docker.pkg.dev/${PROJECT_ID}/<your-registry>
+```
+
+Note that you can push to multiple registries in a single build like so:
+```bash
+gcloud builds submit \
+    --substitutions="_PUSH=true,_REGISTRIES=us-docker.pkg.dev/${PROJECT_ID}/<your-registry> europe-docker.pkg.dev/${PROJECT_ID}/<your-registry>"
 ```
 
 ## TODO
