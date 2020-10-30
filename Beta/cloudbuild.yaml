@@ -4,7 +4,7 @@
 steps:
 - name: 'ubuntu'
   entrypoint: 'bash'
-  args: "./generate-config.sh"
+  args: ["./generate-config.sh"]
   env: ["REGISTRIES=${_REGISTRIES}"]
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
