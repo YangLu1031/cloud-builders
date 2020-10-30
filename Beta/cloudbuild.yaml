@@ -6,6 +6,7 @@ steps:
   entrypoint: 'bash'
   args: ["./generate-config.sh"]
   env: ["REGISTRIES=${_REGISTRIES}"]
+  dir: 'Beta'
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
