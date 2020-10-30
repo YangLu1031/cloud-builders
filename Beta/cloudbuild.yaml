@@ -2,6 +2,10 @@
 # gcloud builds submit
 
 steps:
+- name: 'ubuntu'
+  entrypoint: 'bash'
+  args: "./generate-config.sh"
+  env: "REGISTRIES=${_REGISTRIES}"
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
@@ -17,64 +21,21 @@ steps:
 
     # Build each build step asynchronously and capture each buildid.
     declare -A build_ids
-    for step in ${steps}; do #step start loop
-      pushImages=''
-      template="${step}.yaml"
-      echo "steps:" > "${template}"
+    for cfg in */cloudbuild.yaml; do
+      step=$(dirname "${cfg}")
 
-      for dockerfile in ${step}/Dockerfile*; do #dockerfile start loop
-        images=''
-        IFS=. read _ tag <<< "${dockerfile}"
-
-        s1=''
-        s2=':$${_YYYYMMDD}'
-        if [[ -n "${tag}" ]]; then
-          s1=":${tag}"
-          s2=":${tag}-\$${_YYYYMMDD}"
-        fi
-
-        for r in ${_REGISTRIES}; do
-          images="${images} ${r}/${step}${s1}"
-          images="${images} ${r}/${step}${s2}"
-        done
-
-        echo "- name: 'gcr.io/cloud-builders/docker'" >> "${template}"
-        echo "  args:"                                >> "${template}"
-        echo "  - 'build'"                            >> "${template}"
-        echo "  - '-f'"                               >> "${template}"
-        echo "  - '$(basename ${dockerfile})'"        >> "${template}"
-
-        for image in ${images}; do
-          echo "  - '--tag=${image}'" >> "${template}"
-        done
-        echo "  - '.'" >> "${template}"
-        pushImages="${pushImages} ${images}"
-      done #dockerfile end loop
-
-      echo "timeout: 900s"   >> "${template}"
-      echo "tags:"           >> "${template}"
-      echo "- '${today}'"    >> "${template}"
-      echo "- ${_TRIGGER}"   >> "${template}"
-      echo "- ${step}"       >> "${template}"
-
-      if [[ "${_PUSH}" == "true" ]]; then
-        echo "images:" >> "${template}"
-        for image in ${pushImages}; do
-          echo "- '${image}'" >> "${template}"
-        done
-      fi
-
-      buildid=$(gcloud builds submit --config=${template} --substitutions=_YYYYMMDD=${today} ${step} --async \
+      buildid=$(gcloud builds submit --config=${cfg} --async \
+          --substitutions=_YYYYMMDD=${today},_TRIGGER=${_TRIGGER} ${step} \
           | tee /tmp/${step} | grep QUEUED | awk '{ print $1 }')
       cat /tmp/${step} # Log output to main buildlog.
 
       build_ids[${step}]="${buildid}"
       echo "${step} buildID: ${buildid}"
-    done #step end loop
+    done
 
     # Now wait for builds to complete, failing if any single build fails.
     exitvalue=0
-    for step in ${steps}; do
+    for step in "${!build_ids[@]}"; do
       echo "Waiting for ${step} build..."
       ./wait-for-build.sh "${build_ids[$step]}" || exitvalue=1
     done
@@ -82,11 +43,9 @@ steps:
 options:
   env:
   - 'TZ=EST5EDT'
-  - 'steps=bazel curl docker dotnet gcloud gcs-fetcher git gke-deploy go gradle gsutil helm javac kubectl kustomize mvn npm python skaffold terraform wget yarn'
 timeout: 1200s
 substitutions: # Default substitution values can be overridden on the command line.
   '_TRIGGER':    'manual'
-  '_REGISTRIES': 'just-build-no-push'
-  '_PUSH':       'false'
+  '_REGISTRIES': ''
 tags:
 - "${_TRIGGER}"
