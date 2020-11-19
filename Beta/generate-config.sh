@@ -17,6 +17,10 @@ if [[ -z "${REGISTRIES}" ]]; then
   push="false"
 fi
 
+if [[ -z "${TEMPLATE_NAME}" ]]; then
+  TEMPLATE_NAME="cloudbuild.yaml"
+fi
+
 set -u
 
 # First we create a cloudbuild.yaml that builds each Dockerfile into its
@@ -34,11 +38,11 @@ for dockerfile in */Dockerfile*; do
   IFS=. read _ tag <<< "${dockerfile}"
 
   if [[ "${step}" != "${prevstep}" ]]; then
-    template="${step}/cloudbuild.yaml"
+    template="${step}/${TEMPLATE_NAME}"
     pushimages["${step}"]=''
 
     # Start a new template.
-	[[ -e "${template}" ]] && rm "${template}"
+    [[ -e "${template}" ]] && rm "${template}"
     echo "steps:" > "${template}"
   fi
   prevstep="${step}"
@@ -73,7 +77,7 @@ done
 # Now finish all build configurations with images to push, timeouts, and tags.
 for step in "${!pushimages[@]}"; do
   template="${step}/cloudbuild.yaml"
-  echo "timeout: 900s"   >> "${template}"
+  echo "timeout: 1200s"  >> "${template}"
   echo "tags:"           >> "${template}"
   echo '- ${_YYYYMMDD}'  >> "${template}"
   echo '- ${_TRIGGER}'   >> "${template}"
