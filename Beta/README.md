@@ -178,7 +178,6 @@ To add a new builder:
 
 - Add an appropriately-named sub-directory.
 - Add a `Dockerfile`, `README.md`, and `.gcloudignore` in it.
-- Add it to `cloudbuild.yaml` in this directory.
 - Profit!
 
 ### Adding additional tooling to a builder
