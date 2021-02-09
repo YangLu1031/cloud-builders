@@ -61,6 +61,7 @@ Cloud Builders repository. The Beta images include the following tools that were
 not included in the original set of Cloud Builders:
 
 - [`helm`](helm)
+- [`kpt`](kpt)
 - [`kustomize`](kustomize)
 - [`python`](python)
 - [`skaffold`](skaffold)
