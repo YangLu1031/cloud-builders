@@ -301,7 +301,7 @@ func podDisruptionBudgetIsReady(ctx context.Context, obj *Object) (bool, error) 
 	if err != nil {
 		return false, fmt.Errorf("failed to get status.desiredHealthy field: %v", err)
 	}
-	
+
 	currentHealthy, ok, err := unstructured.NestedInt64(obj.Object, "status", "currentHealthy")
 	if err != nil {
 		return false, fmt.Errorf("failed to get status.currentHealthy field: %v", err)
