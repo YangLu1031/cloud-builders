@@ -14,7 +14,7 @@ Google Cloud products and services.
 
 The AR Builders defined in this repository supplement the Cloud Builders
 currently in use. They are generally -- but not always -- drop-in replacements
-for the [existing Cloud Builders](..).
+for the existing Cloud Builders.
 
 Users need not take any action to migrate away from the existing Cloud Builders,
 which will be maintained for the foreseeable future and continue to exist
