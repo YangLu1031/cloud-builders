@@ -1,2 +1,2 @@
 FROM node
-ARG ["yarn"]
+CMD ["yarn"]

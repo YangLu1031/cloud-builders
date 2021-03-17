@@ -1,2 +1,2 @@
 FROM node
-ARG ["npm"]
+CMD ["npm"]
