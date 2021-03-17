@@ -1,2 +1,2 @@
 FROM node
-ENTRYPOINT ["npm"]
+ARG ["npm"]
