@@ -33,7 +33,6 @@ Using a tagged `gradle` version:
 steps:
 - name: 'gradle:6.5.1-jdk8'
   args: ['...']
-  entrypoint: 'gradle'
 ```
 
 ## Example `cloudbuild.yaml`

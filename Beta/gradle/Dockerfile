@@ -1,2 +1,1 @@
 FROM gradle
-ENTRYPOINT ["gradle"]
