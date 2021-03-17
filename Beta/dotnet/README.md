@@ -1,11 +1,11 @@
 # dotnet
 
-This `dotnet` build step is based on the `microsoft/dotnet:sdk` image supplied by
-Microsoft at https://hub.docker.com/_/microsoft-dotnet-core.
+This `dotnet` build step is based on the `mcr.microsoft.com/dotnet/sdk` image supplied by
+Microsoft at https://hub.docker.com/_/microsoft-dotnet-sdk.
 
 Microsoft additionally supports multiple tagged versions as well as additional
 dotnet tooling. For details, please visit
-https://hub.docker.com/_/microsoft-dotnet-core.
+https://hub.docker.com/_/microsoft-dotnet-sdk.
 
 To migrate from `gcr.io/cloud-builders/dotnet` to this image, make the following
 changes to your `cloudbuild.yaml`:
