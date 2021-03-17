@@ -1,2 +1,1 @@
 FROM maven
-ENTRYPOINT ["mvn"]
