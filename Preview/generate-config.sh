@@ -8,8 +8,8 @@ set -eEo pipefail
 
 # Triggers execute from the root of the repository, so the following
 # conditional enables this build config to work correctly both from the
-# repository root and from within the `Beta` directory.
-[[ -d Beta ]] && cd Beta
+# repository root and from within the `Preview` directory.
+[[ -d Preview ]] && cd Preview
 
 push="true"
 if [[ -z "${REGISTRIES}" ]]; then

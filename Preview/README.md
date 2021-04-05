@@ -1,9 +1,10 @@
-# Beta Artifact Registry ("AR") Builders
+# Preview Builders
 
-This directory previews the upcoming Beta release of Cloud Builders to [Artifact
-Registry](https://cloud.google.com/artifact-registry).
+This directory previews an upcoming Preview release of new Cloud Builders in
+[Artifact Registry](https://cloud.google.com/artifact-registry). (For
+simplicity, we call them "AR Builders".)
 
-This repository contains sample code for an upcoming Beta release of a new set
+This repository contains sample code for an upcoming Preview release of a new set
 of AR Builders. Pre-GA products and features may have limited support, and
 changes to pre-GA products and features may not be compatible with other pre-GA
 versions. For more information, see the [launch stage
@@ -64,9 +65,9 @@ The [existing set of Cloud Builders](..) is hosted in Google Cloud Repository in
 the `gcr.io/cloud-builders/...` namespace. This new set of AR Builders will be
 released in two phases.
 
-### Phase 1: Beta AR Builders in Artifact Registry
+### Phase 1: Preview AR Builders in Artifact Registry
 
-The initial Beta release of these AR Builders will be hosted in [Artifact
+The initial Preview release of these AR Builders will be hosted in [Artifact
 Registry](https://cloud.google.com/artifact-registry). We anticipate using the
 namespace `{region}-docker.pkg.dev/gcb-release/cloud-builders/...` where
 `{region}` is one of `us`, `europe`, or `asia`. To test out or migrate to the AR
@@ -82,24 +83,26 @@ like this:
 
 After Artifact Registry reaches GA, we expect to release a new set of images
 using the GA Artifact Registry repository. At this time, we expect these images
-to be 100% compatible with the Beta AR Builders, but we do expect them to be in
-a new repository namespace.
+to be compatible with the Preview AR Builders, but we do expect them to be
+in a new repository namespace. (Note that this compatibility statement is not a
+guarantee as we are in Preview.)
 
 ### Compatibility
 
 For most users, the AR Builders are compatible as a drop-in replacement for your
-existing Cloud Builder usage; simply change the image name and the Beta AR
+existing Cloud Builder usage; simply change the image name and the Preview AR
 Builder will work fine. The known potential areas of incompatibility are as
 follows:
 
-- Version differences. The Beta AR Builder may use a different tool version than
-  the existing Cloud Builder, and the version may have incompatible changes.
-- Use of `entrypoint:` in a Build Step. Because some Beta AR Builders use
+- Version differences. The Preview AR Builder may use a different tool version
+  than the existing Cloud Builder, and the version may have incompatible
+  changes.
+- Use of `entrypoint:` in a Build Step. Because some Preview AR Builders use
   different base images, your existing `entrypoint:` may not be available in the
-  Beta replacement or may not be compatible with your existing usage.
-- Platform differences: some of the Beta AR Builders use a different operating
-  system in their base image, and the change of OS or platform may result in
-  different behavior from the existing Cloud Builder image.
+  Preview replacement or may not be compatible with your existing usage.
+- Platform differences: some of the Preview AR Builders use a different
+  operating system in their base image, and the change of OS or platform may
+  result in different behavior from the existing Cloud Builder image.
 
 Our analysis of usage of Cloud Builders with the hosted Cloud Build service
 reveals that only a small number of users will experience incompatible changes.
@@ -113,28 +116,28 @@ Different users will choose different strategies in choosing what images to use
 and when, if ever to migrate from the existing Cloud Builders to the AR
 Builders.
 
-#### Leading Edge Beta Adoption
+#### Leading Edge Preview Adoption
 
 Those who wish to reap the benefits of up-to-date community-supported images can
-migrate to the Beta AR Builders when released. These users will get the early
+migrate to the Preview AR Builders when released. These users will get the early
 benefit of the new images, albeit at the cost of potential friction in adoption.
-We expect to keep the Beta namespace in place even after moving the images to
-GA, but as with all Beta software, the Beta images may be discontinued or
+We expect to keep the Preview namespace in place even after moving the images to
+GA, but as with all Preview software, the Preview images may be discontinued or
 experience unstable breaking changes. Note that the dated images described above
 can be used to mitigate against such issues.
 
 #### GA Release
 
 Users interested in a more stable experience can await the GA release of these
-Beta Builders. The existing `gcr.io/cloud-builders/...` images will continue to
-be maintained for the foreseeable future.
+Preview Builders. The existing `gcr.io/cloud-builders/...` images will continue
+to be maintained for the foreseeable future.
 
 #### Direct Use of Community-Supported Images
 
 Some users may wish to have complete control over tool versioning, including the
 ability to choose among the matrix of available tool, platform, and operation
 system versions and options. For such users, we recommend migration away from
-both the existing Cloud Builders and these new Beta AR Builders by going
+both the existing Cloud Builders and these new Preview AR Builders by going
 directly to the community-supported container images for the underlying tools.
 
 For example, the Maven Project supports over 100 versioned combinations of
@@ -143,8 +146,8 @@ Maven, Java, JDK/JRE, and platform on
 combination and have complete control over version adoption and migration in the
 build system.
 
-Each tool in the Beta AR Builders provides example usage for both the Beta AR
-Builder and the underlying versioned tool.
+Each tool in the Preview AR Builders provides example usage for both the Preview
+AR Builder and the underlying versioned tool.
 
 ## Background
 
