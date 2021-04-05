@@ -28,7 +28,7 @@ Community
 repo](https://github.com/GoogleCloudPlatform/cloud-builders-community).
 
 A new set of builders are under development; you can browse the future of Cloud
-Builders in the [Beta](Beta) subdirectory.
+Builders in the [Preview](Preview) subdirectory.
 
 To file issues and feature requests against these builder images, [create an
 issue in this
@@ -77,7 +77,7 @@ the corresponding Cloud Builder.
 You may have already noticed that most of the images in this repo now provide
 pointers to the above alternative images. For the hosted Cloud Build service, we
 plan on hosting versions of these images that are configured for easy
-compatibility with GCB. The [Beta](Beta) subdirectory contains a preview of new
+compatibility with GCB. The [Preview](Preview) subdirectory contains a preview of new
 builders that will soon be available to improve your experience with Cloud
 Builders.
 
