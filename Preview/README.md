@@ -69,23 +69,32 @@ released in two phases.
 
 The initial Preview release of these AR Builders will be hosted in [Artifact
 Registry](https://cloud.google.com/artifact-registry). We anticipate using the
-namespace `{region}-docker.pkg.dev/gcb-release/cloud-builders/...` where
-`{region}` is one of `us`, `europe`, or `asia`. To test out or migrate to the AR
+namespace `$REGION-docker.pkg.dev/cloud-builders/preview/...` where
+`$REGION` is one of `us`, `europe`, or `asia`. To test out or migrate to the AR
 Builder when using the hosted Cloud Build service, just change your Build Step
 like this:
 
 ```diff
 - name: 'gcr.io/cloud-builders/$TOOLNAME'
-+ name: '$REGION-docker.pkg.dev/gcb-release/cloud-builders/$TOOLNAME'
++ name: '$REGION-docker.pkg.dev/cloud-builders/preview/$TOOLNAME'
 ```
+
+The `us`, `europe`, and `asia` `$REGION`s are [Artifact Registry
+Multi-Regions](https://cloud.google.com/artifact-registry/docs/repo-organize#location-mr);
+choose the multi-region closest to your client. If using the hosted Google Cloud
+Build service without specifying a region for your build, use the `us` region
+for Artifact Registry. Otherwise, use the Artifact Registry `$REGION` closest to
+your specified build location.
 
 ### Phase 2: GA Release of AR Builders
 
-After Artifact Registry reaches GA, we expect to release a new set of images
-using the GA Artifact Registry repository. At this time, we expect these images
-to be compatible with the Preview AR Builders, but we do expect them to be
-in a new repository namespace. (Note that this compatibility statement is not a
-guarantee as we are in Preview.)
+We expect to release a GA set of images in the `gcb.pkg.dev/...` namespace by
+the end of 2021. When you access these images, Artifact Registry will
+provide the image from the nearest hosted location.
+
+We expect the GA images to be compatible with the Preview AR Builders as a
+drop-in replacement -- but please note that this compatibility statement is not
+a guarantee of compatibility between Preview and GA.
 
 ### Compatibility
 
