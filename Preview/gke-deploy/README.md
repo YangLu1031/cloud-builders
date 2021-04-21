@@ -1,7 +1,7 @@
 # gke-deploy
 
 This `gke-deploy` build step is identical to [gke-deploy](../gke-deploy) but
-is regionally distributed alongside our Beta Builders.
+is regionally distributed alongside our Cloud Builders.
 
 To migrate from `gcr.io/cloud-builders/gke-deploy` to this image, make the following
 changes to your `cloudbuild.yaml`:

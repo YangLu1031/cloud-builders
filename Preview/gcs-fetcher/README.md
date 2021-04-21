@@ -1,7 +1,7 @@
 # gcs-fetcher
 
 This `gcs-fetcher` build step is identical to [gcs-fetcher](../gcs-fetcher) but
-is regionally distributed alongside our Beta Builders.
+is regionally distributed alongside our Cloud Builders.
 
 To migrate from `gcr.io/cloud-builders/gcs-fetcher` to this image, make the following
 changes to your `cloudbuild.yaml`:
