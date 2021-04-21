@@ -12,7 +12,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/gradle'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/gradle'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/gradle'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -24,7 +24,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/gradle'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/gradle'
   args: ['...']
 ```
 

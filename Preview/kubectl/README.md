@@ -14,7 +14,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/kubectl'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/kubectl'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/kubectl'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -46,7 +46,7 @@ CLOUDSDK_CORE_PROJECT=<your GKE cluster project>
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/kubectl'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/kubectl'
   args: ['get', 'pods']
 options:
   env:

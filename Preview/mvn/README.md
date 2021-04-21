@@ -12,7 +12,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/mvn'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/mvn'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/mvn'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -24,7 +24,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/mvn'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/mvn'
   args: ['install']
 ```
 
@@ -44,7 +44,7 @@ plugin](https://cloud.google.com/appengine/docs/standard/java/using-maven).
 
 This builder uses [`Dockerfile.appengine`](Dockerfile.appengine) to build an App
 Engine-compatible image with the `:appengine` tag; it is available at
-`{region}-docker.pkg.dev/gcb-release/cloud-builders/mvn:appengine`.
+`{region}-docker.pkg.dev/cloud-builders/preview/mvn:appengine`.
 
 ## Example `cloudbuild.yaml`
 

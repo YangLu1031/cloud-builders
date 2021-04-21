@@ -8,7 +8,7 @@ including a `:full` version that provides additional tooling. For details,
 please visit https://hub.docker.com/r/hashicorp/terraform/.
 
 This image is available as
-`{region}-docker.pkg.dev/gcb-release/cloud-builders/terraform` where {region}
+`{region}-docker.pkg.dev/cloud-builders/preview/terraform` where {region}
 is one of `us`, `europe`, or `asia`. Choose the closest region to where your
 builds are executed.
 
@@ -21,7 +21,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/terraform'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/terraform'
   args: ['show', '[OPTIONS]', '[PATH]']
 ```
 

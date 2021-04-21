@@ -14,7 +14,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/git'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/git'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/git'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -26,6 +26,6 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/git'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/git'
   args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/$REPO']
 ```

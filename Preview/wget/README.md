@@ -14,7 +14,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/wget'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/wget'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/wget'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -28,17 +28,17 @@ Fetch the content of a file by URL. The file must be publicly readable since no
 credentials are passed in the request.
 ```
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/wget'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/wget'
   args: ['-O', 'localfile.zip', 'http://www.example.com/remotefile.zip']
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/curl'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/curl'
   args: ['-o', 'localfile.zip', 'http://www.example.com/remotefile.zip']
 ```
 
 Send a `POST` request to a URL, including the `$BUILD_ID` in the payload.
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/wget'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/wget'
   args: ['-q', '--post-data="{\"id\":\"$BUILD_ID\"}"', 'http://www.example.com']
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/curl'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/curl'
   args: ['--data-raw', '"id=$BUILD_ID"', 'http://www.example.com']
 ```

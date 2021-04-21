@@ -8,7 +8,7 @@ various platforms and OS versions.  For details, please visit
 https://hub.docker.com/_/python.
 
 This image is available as
-`{region}-docker.pkg.dev/gcb-release/cloud-builders/python` where {region} is
+`{region}-docker.pkg.dev/cloud-builders/preview/python` where {region} is
 one of `us`, `europe`, or `asia`. Choose the closest region to where your builds
 are executed.
 
@@ -18,7 +18,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/python'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/python'
   args: ['hello.py']
 ```
 

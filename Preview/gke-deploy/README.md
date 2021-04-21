@@ -8,7 +8,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/gke-deploy'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/gke-deploy'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/gke-deploy'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to

@@ -10,7 +10,7 @@ tooling. For details, please visit
 https://github.com/GoogleContainerTools/skaffold.
 
 This image is available as
-`{region}-docker.pkg.dev/gcb-release/cloud-builders/kustomize` where {region}
+`{region}-docker.pkg.dev/cloud-builders/preview/kustomize` where {region}
 is one of `us`, `europe`, or `asia`. Choose the closest region to where your
 builds are executed.
 
@@ -22,7 +22,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/kustomize'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/kustomize'
   args: ['build', 'github.com/kubernetes-sigs/kustomize/examples/multibases/dev/']
 ```
 

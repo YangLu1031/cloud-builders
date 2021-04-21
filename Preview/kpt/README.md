@@ -9,7 +9,7 @@ visit https://github.com/GoogleContainerTools/kpt and/or
 https://googlecontainertools.github.io/kpt/.
 
 This image is available as
-`{region}-docker.pkg.dev/gcb-release/cloud-builders/kpt` where {region}
+`{region}-docker.pkg.dev/cloud-builders/preview/kpt` where {region}
 is one of `us`, `europe`, or `asia`. Choose the closest region to where your
 builds are executed.
 
@@ -20,7 +20,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/kpt'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/kpt'
   args: ['version']
 ```
 

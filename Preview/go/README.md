@@ -11,7 +11,7 @@ changes to your `cloudbuild.yaml`:
 
 ```diff
 - name: 'gcr.io/cloud-builders/go'
-+ name: '{region}-docker.pkg.dev/gcb-release/cloud-builders/go'
++ name: '{region}-docker.pkg.dev/cloud-builders/preview/go'
 ```
 
 where {region} is one of `us`, `europe`, or `asia`. Choose the closest region to
@@ -23,7 +23,7 @@ Usage:
 
 ```yaml
 steps:
-- name: 'us-docker.pkg.dev/gcb-release/cloud-builders/go'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/go'
   args: ['get', 'golang.org/x/net/context']
 options:
   env: ['GOPATH=/workspace/go']
