@@ -1,7 +1,7 @@
 # Set Up Artifact Registry
 
 This directory contains scripts for setting up a new Artifact Registry
-repository suitable for hosting the Beta Artifact Registry cloud-builder images.
+repository suitable for hosting the Preview Artifact Registry cloud-builder images.
 
 ## Before you begin
 
@@ -17,16 +17,16 @@ gcloud services enable cloudbuild.googleapis.com --async
 gcloud services enable artifactregistry.googleapis.com
 for location in us europe asia; do
   # Create the Repository
-  gcloud beta artifacts repositories create cloud-builders --repository-format=docker --location=$location
+  gcloud artifacts repositories create cloud-builders --repository-format=docker --location=$location
   # Make the repository publicly readable
-  gcloud beta artifacts repositories add-iam-policy-binding cloud-builders --member='allAuthenticatedUsers' --role='roles/artifactregistry.reader' --location=$location
+  gcloud artifacts repositories add-iam-policy-binding cloud-builders --member='allAuthenticatedUsers' --role='roles/artifactregistry.reader' --location=$location
 done
 ```
 
 ## Confirm that the repositories were created
 You can see all your repositories across all locations with:
 ```bash
-gcloud beta artifacts repositories list
+gcloud artifacts repositories list
 ```
 
 ## Set up auth for local docker use (optional)
