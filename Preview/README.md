@@ -200,19 +200,24 @@ herein. Users of these Build Steps need not be familiar with this section.
 ## Setup
 
 If you want to host your own version of these images in Artifact Registry in
-your Google Cloud Platform project, use the script in the setup directory. This
-only needs to be done once.
+your Google Cloud Platform project, use the script in the [`setup`](setup)
+subdirectory. This only needs to be done once.
+
+## Mirror the images
+
+If you want to mirror the images from our repository, you may want to use
+[`cloud-run-docker-mirror`](https://github.com/sethvargo/cloud-run-docker-mirror)
+to automatically maintain your mirror.
 
 ## Build the images
 
-Build all the images in this repository by running the following command in this
-directory:
+To build your own images, run the following command in this directory:
 ```bash
 gcloud builds submit
 ```
 
-To build the images and push them to your Artifact Registry repositories (see
-the [`setup`](setup) subdirectory to set up the appropriate repositories), run:
+After setting up the appropriate repositories, you can build the images and push
+them to your own Artifact Registry repositories by running:
 ```bash
 gcloud builds submit \
     --substitutions=_PUSH=true,_REGISTRIES=us-docker.pkg.dev/${PROJECT_ID}/<your-registry>
