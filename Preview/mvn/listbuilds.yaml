@@ -1,4 +1,4 @@
 steps:
-- name: 'us-docker.pkg.dev/$PROJECT_ID/cloud-builders/docker'
+- name: 'us-docker.pkg.dev/cloud-builders/preview/docker'
   args: ['build', '--tag', 'listbuilds', '.']
 - name: 'listbuilds'

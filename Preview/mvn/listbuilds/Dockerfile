@@ -1,5 +1,5 @@
 # Build the listbuilds.jar
-FROM us-docker.pkg.dev/bendory-cloud-builders/cloud-builders/mvn as builder
+FROM us-docker.pkg.dev/cloud-builders/preview/mvn as builder
 COPY pom.xml .
 COPY src src
 RUN mvn -q package
