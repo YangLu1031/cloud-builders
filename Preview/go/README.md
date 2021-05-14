@@ -58,6 +58,8 @@ and runs the built container to confirm that it works.
 The [`Dockerfile`](listbuilds/Dockerfile) used does a multi-stage Docker build that
 results in a minimalist container for the given executable. To do this, it:
 
+1. copies `go.mod` and `go.sum` into the container build context; these files
+   define the needed [Go modules](https://blog.golang.org/using-go-modules).
 1. uses `go get` to fetch dependencies.
 1. cross-compiles the `listbuilds` executable for packaging into a minimalist
    `Docker` container based on the empty `scratch` image.
