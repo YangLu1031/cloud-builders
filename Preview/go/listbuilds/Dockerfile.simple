@@ -1,0 +1,6 @@
+# Package the `listbuilds` artifact into a minimalist container.
+# Certificates are required for GCP interactions.
+FROM scratch
+COPY ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY main /usr/local/bin/listbuilds
+ENTRYPOINT ["/usr/local/bin/listbuilds"]

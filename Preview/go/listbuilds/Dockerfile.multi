@@ -2,6 +2,9 @@
 # otherwise (almost) empty container..
 FROM us-docker.pkg.dev/cloud-builders/preview/go as builder
 
+# Copy in the previously downloaded dependencies cached in /workspace.
+COPY go /go
+
 # Switch to a build directory; the golang container uses /go as its working
 # directory, but is also GOPATH, which leads to errors with go modules.
 WORKDIR /build

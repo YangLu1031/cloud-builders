@@ -43,6 +43,11 @@ Note that both examples set `GOPATH` to `/workspace/go` as a global build
 option. Because `/workspace` persists across all build steps, this means that
 packages installed into the `GOPATH` will be available to all build steps.
 
+The default GOPATH for these containers is set to `/go`; this is the `GOPATH`
+used in the community-supported `golang` variations. While this will work in the
+hosted GCB service in a single build step, it will not be persisted across build
+steps, hence the use of `GOPATH=/workspace/go` in these examples.
+
 ## Example `listbuilds.yaml`
 
 This directory contains an example [`listbuilds.yaml`](listbuilds.yaml) that
@@ -55,8 +60,21 @@ gcloud builds submit --config=listbuilds.yaml listbuilds
 The example builds `listbuilds`, packages it into a minimalist Docker container,
 and runs the built container to confirm that it works.
 
-The [`Dockerfile`](listbuilds/Dockerfile) used does a multi-stage Docker build that
-results in a minimalist container for the given executable. To do this, it:
+This build is performed in two different ways to demonstrate usage.
+
+### Build #1: Build executable, then package using `docker`
+
+First [`listbuilds.yaml`](listbuilds.yaml) demonstrates use of the `go` builder
+for a stand-alone build of `listbuilds.go` into a `main` executable. This
+executable is built and tested, then packaged into a minimalist Docker container
+using [`Dockerfile.simple`](listbuilds/Dockerfile.simple). Comments in
+`listbuilds.yaml` explain each step.
+
+### Build #2: build and package executable using a multi-stage Docker build
+
+The [`Dockerfile.multi`](listbuilds/Dockerfile.multi) used does a multi-stage
+Docker build that results in a minimalist container for the given executable. To
+do this, it:
 
 1. copies `go.mod` and `go.sum` into the container build context; these files
    define the needed [Go modules](https://blog.golang.org/using-go-modules).

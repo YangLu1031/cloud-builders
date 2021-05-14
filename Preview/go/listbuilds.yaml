@@ -1,4 +1,37 @@
 steps:
+# First build: we build using the go container, then package separately into a
+# Docker container.
+# Fetch dependencies based on go.mod.
+- name: 'us-docker.pkg.dev/cloud-builders/preview/go'
+  args: ['get', '-v']
+# Build our executable.
+- name: 'us-docker.pkg.dev/cloud-builders/preview/go'
+  args: ['build', '-a', '-installsuffix', 'cgo', '-o', 'main', 'listbuilds.go']
+  env: ['CGO_ENABLED=0', 'GOOS=linux']
+# Test it.
+- name: 'us-docker.pkg.dev/cloud-builders/preview/go'
+  entrypoint: '/workspace/main'
+# We need to package it with `ca-certificates.crt` to enable GCP interactions.
+- name: 'us-docker.pkg.dev/cloud-builders/preview/go'
+  entrypoint: 'cp'
+  args: ['/etc/ssl/certs/ca-certificates.crt', '.']
+# Now package our built binary into a minimalist Docker container.
 - name: 'us-docker.pkg.dev/cloud-builders/preview/docker'
-  args: ['build', '--tag', 'listbuilds', '.']
+  args: ['build', '--tag', 'listbuilds', '-f', 'Dockerfile.simple', '.']
+# Demonstrate that the built container works as expected.
 - name: 'listbuilds'
+
+
+# Second build: we build and package using a multi-step Docker build.
+# Note that this build re-uses the previously cached dependencies from the prior
+# build. Also note that we rebuild main from scratch rather than just packaging
+# the previously built `main` from the above build.
+- name: 'us-docker.pkg.dev/cloud-builders/preview/docker'
+  args: ['build', '--tag', 'listbuilds', '-f', 'Dockerfile.multi', '.']
+# Demonstrate that the built container works as expected.
+- name: 'listbuilds'
+
+# Using a GOPATH directory inside the /workspace directory enables persistence
+# of dependencies across build steps.
+options:
+  env: ['GOPATH=/workspace/go']
