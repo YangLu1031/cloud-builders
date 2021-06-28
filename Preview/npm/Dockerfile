@@ -1,2 +1,2 @@
 FROM node
-CMD ["npm"]
+ENTRYPOINT ["npm"]

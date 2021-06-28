@@ -1,2 +1,2 @@
 FROM node
-CMD ["yarn"]
+ENTRYPOINT ["yarn"]
