@@ -5,7 +5,7 @@ steps:
 - name: 'ubuntu'
   entrypoint: 'bash'
   args: ["./generate-config.sh"]
-  env: ["REGISTRIES=${_REGISTRIES}"]
+  env: ["REGISTRIES=${_REGISTRIES}", "STAGE=${_STAGE}"]
   dir: 'Preview'
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
@@ -48,5 +48,7 @@ timeout: 1200s
 substitutions: # Default substitution values can be overridden on the command line.
   '_TRIGGER':    'manual'
   '_REGISTRIES': ''
+  '_STAGE':      'manual'
 tags:
 - "${_TRIGGER}"
+- "${_STAGE}"

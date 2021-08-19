@@ -81,6 +81,7 @@ for step in "${!pushimages[@]}"; do
   echo "tags:"           >> "${template}"
   echo '- ${_YYYYMMDD}'  >> "${template}"
   echo '- ${_TRIGGER}'   >> "${template}"
+  echo "- ${STAGE}"      >> "${template}"
   echo "- ${step}"       >> "${template}"
   if [[ "${push}" == "true" ]]; then
     echo "images:" >> "${template}"
