@@ -1,0 +1,1 @@
+FROM us-docker.pkg.dev/gke-windows-tools/docker-repo/gke-windows-builder
