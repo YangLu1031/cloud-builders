@@ -22,4 +22,4 @@ images:
 - 'gcr.io/$PROJECT_ID/gcloud'
 - 'gcr.io/$PROJECT_ID/gcloud-slim'
 
-timeout: 1200s
+timeout: 2400s

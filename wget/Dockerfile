@@ -1,4 +1,4 @@
-FROM launcher.gcr.io/google/ubuntu16_04
+FROM gcr.io/gcp-runtimes/ubuntu_20_0_4
 
 RUN apt-get update && \
   apt-get -y install wget ca-certificates
